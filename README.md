@@ -26,7 +26,11 @@ This minimal theme is built using assumptions that require Hugo 0.81.0 or higher
    git add ..
    git commit -m "Add hugoMinimalTestTheme as a submodule"
    ```
-5. To test the result, run the local Hugo server
+5. Change to the site directory
+   ```
+   cd ..
+   ```
+6. To test the result, run the local Hugo server
    ```
    hugo server -t hugoMinimalTestTheme -b http://localhost:1313/
    ```
