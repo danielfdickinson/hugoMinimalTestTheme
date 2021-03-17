@@ -1,7 +1,7 @@
 name = "HugoMinimalTestTheme"
 license = "MIT"
 licenselink = "https://github.com/danielfdickinson/hugoMinimalTestTheme/blob/master/LICENSE"
-description = "A minimal theme to generate full unstyled site for https://github.com/gohugio/hugoBasicExample"
+description = "A minimal theme to generate full unstyled site for https://github.com/gohugoio/hugoBasicExample"
 homepage = "http://example.com/"
 tags = ["test","minimal"]
 features = ["minimum"]
