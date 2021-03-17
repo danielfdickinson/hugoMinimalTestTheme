@@ -1,0 +1,7 @@
+{{ define "main" }}
+  <ul>
+  {{ range .Pages }}
+    <li><a href="{{ .RelPermalink }}">{{ partial "return-helpers/title" . }}</a></li>
+  {{ end }}
+   </ul>
+{{ end }}

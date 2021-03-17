@@ -1,0 +1,15 @@
+{{- $foundTitle := "Untitled" -}}
+{{- if .Title -}}
+  {{- $foundTitle = .Title -}}
+{{- else if eq .Kind "home" -}}
+    {{- if .Site.Title -}}
+        {{- $foundTitle = .Site.Title -}}
+    {{- else -}}
+        {{- $foundTitle = "Untitled Site" -}}
+    {{- end -}}
+{{- else if .File -}}
+    {{- if .File.TranslationBaseName -}}
+        {{ $foundTitle = .File.TranslationBaseName | title -}}
+    {{- end -}}
+{{- end -}}
+{{- return $foundTitle -}}
