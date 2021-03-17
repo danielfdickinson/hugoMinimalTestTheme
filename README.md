@@ -1,6 +1,10 @@
 # hugoMinimalTestTheme
 A minimum test theme to generate the full site of unstyled pages for https://github.com/gohugoio/hugoBasicExample
 
+## Modern Hugo Only (as of 2021-03-17)
+
+This minimal theme is built using assumptions that require Hugo 0.81.0 or higher.
+
 ## Usage
 
 1. Clone a site, for example hugoBasicExample and switch to it
