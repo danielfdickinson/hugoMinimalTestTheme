@@ -1,0 +1,11 @@
+{{ define "main" }}
+<h2>Custom Layout for Regular Pages (layout-section-order layout)</h2>
+    {{ if .Content }}
+        {{ .Content }}
+    {{ end }}
+    <hr>
+    {{ if .Pages }}
+        <h3>This should never happen!</h3>
+        {{ partial "helpers/basic-flat-section" . }}
+    {{ end }}
+{{ end }}
