@@ -36,6 +36,22 @@ Obviously for ``feature-layout`` use the layout from the table below.
 
 * Currently only ``custom-section-layout-test`` has special layouts (see "Layout Section Order Testing") above although the section also has 'standalone' (i.e. without layout ``layout-section-order`` required).
 
+### Custom Taxonomy
+
+* Currently only ``taxonomy-test-taxonomy``
+* To use it:
+  * In ``config.toml`` have a section such as the followings (with the appropriate taxonomies for your site):
+  ```
+  [taxonomies]
+    category = "categories"
+    tag = "tags"
+    taxonomy-test-taxonomy = "taxonomy-test-taxonomies"
+  ```
+  * In page frontmatter that should be using the taxonomy (assuming toml frontmatter):
+    ```
+    taxonomy-test-taxonomies = ["term1","term2"]
+    ```
+
 ### hello-world Shortcode
 
 A simple shortcode that emits an HTML paragraph with 'Hello World!'. To use it,
