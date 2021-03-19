@@ -1,5 +1,7 @@
 # hugoMinimalTestTheme
-A minimum test theme to generate the full site of unstyled pages for https://github.com/gohugoio/hugoBasicExample
+A minimum test theme to generate the full site of unstyled pages for https://github.com/gohugoio/hugoBasicExample (and other Hugo sites).
+
+Includes the ability to enable less minimal features via custom layouts (with thanks to [Patrick / davidsneighbour on the Hugo Forum](https://discourse.gohugo.io/u/davidsneighbour) for the suggestion).
 
 ## Modern Hugo Only (as of 2021-03-17)
 
