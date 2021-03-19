@@ -8,7 +8,9 @@ The purpose of the repo is not for CI or automated testing, but to have a set of
 
 This minimal theme is built using assumptions that may require Hugo 0.81.0 or higher.
 
-## A Note on Feature Selection
+## Available Features
+
+### A Note on Layout Feature Selection
 
 As Patrick (davidsneighbour on the [Hugo Forum](https://discourse.gohugo.io)) [suggested in response to my announcement of this theme](https://discourse.gohugo.io/t/a-theme-for-minimal-reproducible-test-casing/31790/6), features that are less 'minimal', but still needed in order to have a minimal reproducible test case for more complex (even if barely) situations than an absolute minimal theme, can be enabled through the use of custom layouts.
 
@@ -21,7 +23,7 @@ This is possible through the magic of [Hugo's Lookup Order](https://gohugo.io/te
 
 Obviously for ``feature-layout`` use the layout from the table below.
 
-### Available Features
+#### Layout Feature Table
 
 | Feature                        | feature-layout        | Applies to              | Description |
 |--------------------------------|-----------------------|-------------------------|-------------|
@@ -34,6 +36,10 @@ Obviously for ``feature-layout`` use the layout from the table below.
 
 * Currently only ``custom-section-layout-test`` has special layouts (see "Layout Section Order Testing") above although the section also has 'standalone' (i.e. without layout ``layout-section-order`` required).
 
+### hello-world Shortcode
+
+A simple shortcode that emits an HTML paragraph with 'Hello World!'. To use it,
+add ``{{< hello-world>}}`` to a **content** file (not template).
 ## Usage
 
 1. Clone a site, for example hugoBasicExample and switch to it
