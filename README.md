@@ -20,9 +20,11 @@ This is possible through the magic of [Hugo's Lookup Order](https://gohugo.io/te
 
 Obviously for ``feature-layout`` use the layout from the table below.
 
-| Feature    | feature-layout | Applies to              | Description |
-|------------|----------------|-------------------------|-------------|
-| Pagination | pagination     | section/list pages only | Displays a section as a list of the pages (both regular pages and section pages) in a section, dividing the list of pages in a section into separate sub-pages, each containing at most the number of pages from the section that is defined in the config's ``pagination`` setting (default 10). |
+| Feature               | feature-layout | Applies to              | Description |
+|-----------------------|----------------|-------------------------|-------------|
+| Custom Layout Testing | custom         | sections and single     | A generic custom layout (just announces it is a custom layout with a heading) that will work with both a section and a single page. |
+| Layout Order Testing  | layout-order   | sections and single     | A section page should display the section ``layout-order`` layout not the single ``layout-order`` layout. A single page should display the single page ``layout-order`` layout |
+| Pagination            | pagination     | section/list pages only | Displays a section as a list of the pages (both regular pages and section pages) in a section, dividing the list of pages in a section into separate sub-pages, each containing at most the number of pages from the section that is defined in the config's ``pagination`` setting (default 10). |
 
 ## Usage
 
