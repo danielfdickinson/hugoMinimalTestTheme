@@ -9,8 +9,12 @@ This minimal theme is built using assumptions that may require Hugo 0.81.0 or hi
 
 As Patrick (davidsneighbour on the [Hugo Forum](https://discourse.gohugo.io)) [suggested in response to my announcement of this theme](https://discourse.gohugo.io/t/a-theme-for-minimal-reproducible-test-casing/31790/6), features that are less 'minimal', but still needed in order to have a minimal reproducible test case for more complex (if if barely) situations than an absolute minimal theme, can be enabled through the use of custom layouts.
 
-If a feature is listed in the table below, one can activate the feature on page by
+If a feature is listed in the table below, one can activate the feature on a page by
 adding ``layouts = "feature-layout"`` (for toml frontmatter) or ``layouts: feature-layout`` (for yaml frontmatter) to the page metadata in the page file in the ``contents`` directory. (One can also set per-page metadata in ``config.toml`` but for that see the [Hugo Documentation](https://gohugo.io/documentation/)).
+
+Not that features are often specific to the type of page (e.g. list pages vs. single pages) and when that is the case it is noted under 'Applies to'.
+
+This is possible through the magic of [Hugo's Lookup Order](https://gohugo.io/templates/lookup-order).
 
 Obviously for ``feature-layout`` use the layout from the table below.
 
