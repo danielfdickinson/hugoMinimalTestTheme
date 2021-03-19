@@ -1,0 +1,13 @@
+{{ define "main" }}
+    <ul>
+        {{ $paginator := (.Paginate (.Pages.GroupByDate "2006-01")).PageGroups }}
+        {{ range $paginator }}
+            <li>{{ .Key }}<ul>
+            {{ range .Pages }}
+                <li><a href="{{ .RelPermalink }}">{{ partial "return-helpers/title" . }}</a></li>
+            {{ end }}
+            </ul></li>
+        {{ end }}
+    </ul>
+    {{ template "_internal/pagination.html" . }}
+{{ end }}
