@@ -71,7 +71,18 @@ add ``{{< hello-world>}}`` to a **content** file (not template).
 
 ### Using Hugo Modules (preferred)
 
-TBD
+1. Initialize the Hugo module system: ``hugo mod init github.com/<your_user>/<your_project>`` (assuming you are using github, of course).
+2. Import the theme in your ``config.html``
+   ```
+   [module]
+     [[module.imports]]
+        path = "github.com/danielfdickinson/hugoMinimalTestTheme"
+   ```
+3. Change back to the site directory
+4. To test the result, run the local Hugo server
+   ```
+   hugo server -t hugoMinimalTestTheme -b http://localhost:1313/
+   ```
 ### Using downloaded copy of the theme (e.g. Zip from Github)
 
 1. Obtain a copy of the theme e.g. ([a theme Zip file from Github](https://github.com/danielfdickinson/hugoMinimalTestTheme/archive/master.zip))
