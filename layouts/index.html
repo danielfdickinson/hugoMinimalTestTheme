@@ -1,6 +1,6 @@
 {{ define "main" }}
     {{ partial "helpers/basic-flat-section" . }}
-    <h2>Taxonomy Terms</h2>
+    <h2>Taxonomies</h2>
     {{ with .Site.Taxonomies }}
     <ul>
         {{ range $taxonomy_term, $taxonomy := . }}
