@@ -3,6 +3,7 @@ A minimum test theme to generate the full site of unstyled pages for https://git
 
 Includes the ability to enable less minimal features via custom layouts (with thanks to [Patrick / davidsneighbour on the Hugo Forum](https://discourse.gohugo.io/u/davidsneighbour) for the suggestion).
 
+The purpose of the repo is not for CI or automated testing, but to have a set of minimal layouts for creating minimum reproducible test cases for reporting bugs to the Hugo developers.
 ## Modern Hugo Only (as of 2021-03-17)
 
 This minimal theme is built using assumptions that may require Hugo 0.81.0 or higher.
