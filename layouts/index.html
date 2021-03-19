@@ -1,3 +1,13 @@
 {{ define "main" }}
     {{ partial "helpers/basic-flat-section" . }}
+    <h2>Taxonomies</h2>
+    {{ with .Site.Taxonomies }}
+    <ul>
+        {{ range $taxonomy_term, $taxonomy := . }}
+            {{ with $.Site.GetPage (printf "/%s" $taxonomy_term) }}
+                <li><a href="{{ .Permalink }}">{{ $taxonomy_term }}</a></li>
+            {{ end }}
+        {{ end }}
+    </ul>
+    {{ end }}
 {{ end }}
