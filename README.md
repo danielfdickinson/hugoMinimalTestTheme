@@ -41,12 +41,12 @@ Obviously for ``feature-layout`` use the layout from the table below.
 * Currently only ``taxonomy-test-taxonomy``
 * To use it:
   * In ``config.toml`` have a section such as the followings (with the appropriate taxonomies for your site):
-  ```
-  [taxonomies]
-    category = "categories"
-    tag = "tags"
-    taxonomy-test-taxonomy = "taxonomy-test-taxonomies"
-  ```
+    ```
+    [taxonomies]
+      category = "categories"
+      tag = "tags"
+      taxonomy-test-taxonomy = "taxonomy-test-taxonomies"
+    ```
   * In page frontmatter that should be using the taxonomy (assuming toml frontmatter):
     ```
     taxonomy-test-taxonomies = ["term1","term2"]
