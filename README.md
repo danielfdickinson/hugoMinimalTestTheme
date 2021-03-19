@@ -39,20 +39,27 @@ Obviously for ``feature-layout`` use the layout from the table below.
    mkdir themes
    cd themes
    ```
-3. Add hugoMinimalTestTheme as a submodule
+
+### Using Hugo Modules (preferred)
+
+TBD
+### Using downloaded copy of the theme (e.g. Zip from Github)
+
+1. Obtain a copy of the theme e.g. ([a theme Zip file from Github](https://github.com/danielfdickinson/hugoMinimalTestTheme/archive/master.zip))
+2. Copy/extract the theme into hugoMinimalTestTheme in the themes directory
+3. Change back to the site directory
+4. To test the result, run the local Hugo server
    ```
-   git submodule add -f https://github.com/danielfdickinson/hugoMinimalTestTheme.git hugoMinimalTestTheme
+   hugo server -t hugoMinimalTestTheme -b http://localhost:1313/
    ```
-4. Commit the change
+### Using git submodules (deprecated)
+
+1. In the themes directory, add hugoMinimalTestTheme as a submodule
    ```
-   git add ..
-   git commit -m "Add hugoMinimalTestTheme as a submodule"
+   git submodule add -f https://github.com/danielfdickinson/hugoMinimalTestTheme.git
    ```
-5. Change to the site directory
-   ```
-   cd ..
-   ```
-6. To test the result, run the local Hugo server
+2. Change back to the site directory
+3. To test the result, run the local Hugo server
    ```
    hugo server -t hugoMinimalTestTheme -b http://localhost:1313/
    ```
