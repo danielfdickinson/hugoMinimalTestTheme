@@ -81,7 +81,7 @@ add ``{{< hello-world>}}`` to a **content** file (not template).
 3. Change back to the site directory
 4. Get the module
    ```
-   hugo get github.com/danielfdickinson/hugoMinimalTestTheme
+   hugo mod get github.com/danielfdickinson/hugoMinimalTestTheme
    ```
 5. To test the result, run the local Hugo server
    ```
