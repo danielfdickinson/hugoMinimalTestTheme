@@ -79,9 +79,13 @@ add ``{{< hello-world>}}`` to a **content** file (not template).
         path = "github.com/danielfdickinson/hugoMinimalTestTheme"
    ```
 3. Change back to the site directory
-4. To test the result, run the local Hugo server
+4. Get the module
    ```
-   hugo server -t hugoMinimalTestTheme -b http://localhost:1313/
+   hugo get github.com/danielfdickinson/hugoMinimalTestTheme
+   ```
+5. To test the result, run the local Hugo server
+   ```
+   hugo server -b http://localhost:1313/
    ```
 ### Using downloaded copy of the theme (e.g. Zip from Github)
 
