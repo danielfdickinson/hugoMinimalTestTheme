@@ -1,0 +1,234 @@
+<table>
+    <tr>
+      <td>.AllPages</td>
+      <td>
+        <details>
+          <summary>{{ len .AllPages }}</summary>
+          {{ with .AllPages }}
+          <ul>
+            {{ range . }}
+              <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Author</td>
+      <td>
+        <details>
+          <summary>{{ len .Author }} keys</summary>
+          {{ with .Author }}
+          <ul>
+            {{ range $key, $value := .Author }}
+              <li>$key: $value</li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.BaseURL</td>
+      <td>{{ .BaseURL }}</td>
+    </tr>
+    <tr>
+      <td>.BuildDrafts</td>
+      <td>{{ .BuildDrafts }}</td>
+    </tr>
+    <tr>
+      <td>.Copyright</td>
+      <td>{{ .Copyright }}</td>
+    </tr>
+    <tr>
+      <td>.DisqusShortname</td>
+      <td>{{ .DisqusShortname }}</td>
+    </tr>
+    <tr>
+      <td>.GoogleAnalytics</td>
+      <td>{{ .GoogleAnalytics }}</td>
+    </tr>
+    <tr>
+      <td>.Home</td>
+      <td>{{ .Home }}</td>
+    </tr>
+    <tr>
+      <td>.IsMultiLingual</td>
+      <td>{{ .IsMultiLingual }}</td>
+    </tr>
+    <tr>
+      <td>.IsServer</td>
+      <td>{{ .IsServer }}</td>
+    </tr>
+    <tr>
+      <td>.Language.Lang</td>
+      <td>{{ .Language.Lang }}</td>
+    </tr>
+    <tr>
+      <td>.Language.LanguageName</td>
+      <td>{{ .Language.LanguageName }}</td>
+    </tr>
+    <tr>
+      <td>.Language.Weight</td>
+      <td>{{ .Language.Weight }}</td>
+    </tr>
+    <tr>
+      <td>.Language</td>
+      <td>{{ .Language }}</td>
+    </tr>
+    <tr>
+      <td>.LanguageCode</td>
+      <td>{{ .LanguageCode }}</td>
+    </tr>
+    <tr>
+      <td>.LanguagePrefix</td>
+      <td>{{ .LanguagePrefix }}</td>
+    </tr>
+    <tr>
+      <td>.Languages</td>
+      <td>
+        <details>
+          <summary>{{ len .Languages }}</summary>
+          {{ with .Languages }}
+          <ul>
+            {{ range . }}
+              <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.LastChange</td>
+      <td>{{ .LastChange.Local }}</td>
+    </tr>
+    <tr>
+      <td>.Menus</td>
+      <td>
+        <details>
+          <summary>{{ len .Menus }}</summary>
+          {{ with .Menus }}
+          <ul>
+            {{ range $key, $value := . }}
+            <li>
+              <details>
+                <summary>{{ $key }}: {{ len $value }}</summary>
+                {{ with $value }}
+                <ul>
+                  {{ range . }}
+                  <li>{{ partial "helpers/debug-tables/debug-menus-table" . }}</li>
+                  {{ end }}
+                <ul>
+                {{ end }}
+              </details>
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Pages</td>
+      <td>
+        <details>
+          <summary>{{ len .Pages }}</summary>
+          {{ with .Pages }}
+          <ul>
+            {{ range . }}
+              <li>{{ . }}</li>
+            {{ end }}
+            </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.RegularPages</td>
+      <td>
+        <details>
+          <summary>{{ len .RegularPages }}</summary>
+          {{ with .RegularPages }}
+          <ul>
+            {{ range . }}
+              <li>{{ . }}</li>
+            {{ end }}
+            </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Section</td>
+      <td>
+        <details>
+          <summary>{{ len .Sections }}</summary>
+          {{ with .Sections }}
+          <ul>
+            {{ range . }}
+              <li>{{ . }}</li>
+            {{ end }}
+            </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Taxonomies</td>
+      <td>
+        <details>
+          <summary>{{ len .Taxonomies }}</summary>
+          {{ with .Taxonomies }}
+          <ul>
+            {{ range $key, $value :=. }}
+            <li>
+              <details>
+                <summary>{{ $key }}: {{ len $value }}</summary>
+                {{ with $value }}
+                <ul>
+                  {{ range $key2, $value2 := . }}
+                  <li>
+                    <details>
+                    <summary>{{ $key2 }}: {{ len $value2 }}</summary>
+                    {{ with $value2 }}
+                    <ul>
+                      {{ range . }}
+                        <li>{{ . }}</li>
+                      {{ end }}
+                    </ul>
+                    {{ end }}
+                    </details>
+                  </li>
+                  {{ end }}
+                </ul>
+                {{ end }}
+              </details>
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Title</td>
+      <td>{{ .Title }}</td>
+    </tr>
+    <tr>
+      <td>.Params</td>
+      <td>
+        <details>
+          <summary>{{ len .Params }}</summary>
+          {{ with .Params }}
+          <ul>
+            {{ range $key, $value := . }}
+              <li>{{ $key }}: {{ $value }}</li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+  </table>

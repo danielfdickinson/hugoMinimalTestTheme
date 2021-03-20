@@ -6,7 +6,7 @@ Includes the ability to enable less minimal features via custom layouts (with th
 The purpose of the repo is not for CI or automated testing, but to have a set of layouts for creating minimum reproducible test cases for reporting bugs to the Hugo developers.
 ## Modern Hugo Only (as of 2021-03-17)
 
-This minimal theme is built using assumptions that may require Hugo 0.81.0 or higher.
+This minimal theme is built using assumptions that may require Hugo 0.81.0 or higher, and in any event that is the only version which this theme has been tested, at present.
 
 ## Available Features
 

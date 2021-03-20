@@ -7,5 +7,7 @@
         {{- block "main" . }}{{- end }}
         </div>
         {{- partial "footer.html" . -}}
+
+        {{ partial "helpers/debug-tables/debug-tables-list" . }}
     </body>
 </html>

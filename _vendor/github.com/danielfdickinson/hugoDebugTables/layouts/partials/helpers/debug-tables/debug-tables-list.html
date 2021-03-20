@@ -1,0 +1,542 @@
+{{ if eq hugo.Environment "development" }}
+<section aria-label="Hugo Debug Section">
+  <details>
+    <summary>Hugo Debug Table</summary>
+    <i>Idea and initial HTML source from <a href="https://raw.githubusercontent.com/zwbetz-gh/starter-hugo-debug-site/master/layouts/partials/debug-table.html">zwbetz-gh/starter-hugo-debug-site debug-table</a></i>
+    <ul>
+      <li>
+        <details>
+        <summary>Page</summary>
+        <table>
+        <tr>
+          <td>.AlternativeOutputFormats</td>
+          <td>
+            <details>
+              <summary>{{ len .AlternativeOutputFormats }}</summary>
+                {{ if .AlternativeOutputFormats }}
+                <ul>
+                  {{ range .AlternativeOutputFormats }}
+                      <li>{{ .Name }}: {{ .MediaType }}</li>
+                  {{ end }}
+                </ul>
+                {{ end }}
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.Aliases</td>
+          <td><details>
+            <summary>{{ len .Aliases }}</summary>
+            {{ with .Aliases }}
+            <ul>
+              {{ range . }}
+              <li>{{ . }}</li>
+              {{ end }}
+            </ul>
+            {{ end }}
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.Content</td>
+          <td>
+            <details>
+              <summary>{{ len .Content }} characters</summary>
+              {{ with .Content }}
+                <code>
+                  {{ . | htmlEscape | htmlUnescape }}
+                </code>
+              {{ end }}
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.Date</td>
+          <td>{{ .Date.Local}}</td>
+        </tr>
+        <tr>
+          <td>.Description</td>
+          <td>{{ .Description }}</td>
+        </tr>
+        <tr>
+          <td>.Draft</td>
+          <td>{{ .Draft }}</td>
+        </tr>
+        <tr>
+          <td>.ExpiryDate</td>
+          <td>{{ .ExpiryDate.Local }}</td>
+        </tr>
+        <tr>
+          <td>.FuzzyWordCount</td>
+          <td>{{ .FuzzyWordCount }}</td>
+        </tr>
+        <tr>
+          <td>.IsHome</td>
+          <td>{{ .IsHome }}</td>
+        </tr>
+        <tr>
+          <td>.IsNode</td>
+          <td>{{ .IsNode }}</td>
+        </tr>
+        <tr>
+          <td>.IsPage</td>
+          <td>{{ .IsPage }}</td>
+        </tr>
+        <tr>
+          <td>.IsSection</td>
+          <td>{{ .IsSection }}</td>
+        </tr>
+        <tr>
+          <td>.IsTranslated</td>
+          <td>{{ .IsTranslated }}</td>
+        </tr>
+        <tr>
+          <td>.Keywords</td>
+          <td><details>
+            <summary>{{ len .Keywords }}</summary>
+            {{ with .Keywords }}
+            <ul>
+              {{ range .Keywords }}
+              <li>{{ . }}</li>
+              {{ end }}
+            </ul>
+            {{ end }}
+          </details></td>
+        </tr>
+        <tr>
+          <td>.Kind</td>
+          <td>{{ .Kind }}</td>
+        </tr>
+        <tr>
+          <td>.Language</td>
+          <td>{{ .Language }}</td>
+        </tr>
+        <tr>
+          <td>.Lastmod</td>
+          <td>{{ .Lastmod.Local }}</td>
+        </tr>
+        <tr>
+          <td>.LinkTitle</td>
+          <td>{{ .LinkTitle }}</td>
+        </tr>
+        <tr>
+          <td>.Next</td>
+          <td>{{ .Next }}</td>
+        </tr>
+        <tr>
+          <td>.NextInSection</td>
+          <td>{{ .NextInSection }}</td>
+        </tr>
+        <tr>
+          <td>.OutputFormats</td>
+            <td>
+              <details>
+                <summary>{{ len .OutputFormats }}</summary>
+                  {{ if .OutputFormats }}
+                  <ul>
+                    {{ range .OutputFormats }}
+                        <li>{{ .Name }}: {{ .MediaType }}</li>
+                    {{ end }}
+                  </ul>
+                  {{ end }}
+                </details>
+              </td>
+            </td>
+        </tr>
+        <tr>
+          <td>.Pages</td>
+          <td><details>
+            <summary>{{ len .Pages }}</summary>
+            {{ with .Pages }}
+            <ul>
+              {{ range . }}
+                <li>{{ . }}</li>
+              {{ end }}
+            </ul>
+            {{ end }}
+          </details></td>
+        </tr>
+        <tr>
+          <td>.Permalink</td>
+          <td>{{ .Permalink }}</td>
+        </tr>
+        <tr>
+          <td>.Plain</td>
+          <td>
+            <details>
+              <summary>{{len .Plain}} characters</summary>
+              {{ with .Plain }}
+                <p>{{ . | htmlEscape | htmlUnescape }}</p>
+              {{ end }}
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.PlainWords</td>
+          <td>
+            <details>
+              <summary>{{ len .PlainWords }} words</summary>
+              {{ with .PlainWords }}
+                <ul>
+                  {{ range . }}
+                    <li>{{ . | htmlEscape | htmlUnescape }}</li>
+                  {{ end }}
+                </p>
+              {{ end }}
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.Prev</td>
+          <td>{{ .Prev }}</td>
+        </tr>
+        <tr>
+          <td>.PrevInSection</td>
+          <td>{{ .PrevInSection }}</td>
+        </tr>
+        <tr>
+          <td>.PublishDate</td>
+          <td>{{ .PublishDate.Local }}</td>
+        </tr>
+        <tr>
+          <td>.RawContent</td>
+          <td>
+            {{ with .RawContent }}
+            <details>
+              <summary>{{ len . }} characters</summary>
+              <pre>{{ . | htmlEscape | htmlUnescape }}</pre>
+            </details>
+            {{ end }}
+          </td>
+        </tr>
+        <tr>
+          <td>.ReadingTime</td>
+          <td>~ {{ .ReadingTime }} minutes</td>
+        </tr>
+        <tr>
+          <td>.Resources</td>
+          <td>
+            <details>
+              <summary>{{ len .Resources }}</summary>
+              {{ with .Resources }}
+                <ul>
+                  {{ range . }}
+                    <li>{{ . }}</li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.RelPermalink</td>
+          <td>{{ .RelPermalink }}</td>
+        </tr>
+        <tr>
+          <td>.Site</td>
+          <td>
+            <details>
+              <summary>{{ if .Site.Title }}{{ .Site.Title }}{{ else }}Untitled Site{{ end }}</summary>
+              {{ partial "helpers/debug-tables/debug-site-table" .Site }}
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.Sites</td>
+          <td>
+            <details>
+              <summary>{{ len .Sites }}</summary>
+              {{ with .Sites }}
+                <ul>
+                  {{ range . }}
+                    <li>
+                      <details>
+                        <summary>{{ if .Title }}{{ .Title }}{{ else }}Untitled Site{{ end }}</summary>
+                        {{ partial "helpers/debug-tables/debug-site-table" . }}
+                      </details>
+                    </li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.Sites.First</td>
+          <td>
+            <details>
+              <summary>{{ if .Sites.First.Title }}{{ .Sites.First.Title }}{{ else }}Untitled Site{{ end }}</summary>
+              {{ partial "helpers/debug-tables/debug-site-table" .Sites.First }}
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.Summary</td>
+          <td>
+            <details>
+              <summary>{{ len .Summary }} characters</summary>
+              <code>
+                {{ .Summary | htmlEscape | htmlUnescape }}
+              </code>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.TableOfContents</td>
+          <td>
+            <details>
+              <summary>{{ len .TableOfContents }} characters</summary>
+              <code>
+                {{ .TableOfContents | htmlEscape | htmlUnescape }}
+              </code>
+            </details>
+          </td>
+        </tr>
+        <tr>
+          <td>.Title</td>
+          <td>{{ .Title | htmlEscape | htmlUnescape }}</td>
+        </tr>
+        <tr>
+          <td>.Translations</td>
+          <td>{{ .Translations }}</td>
+        </tr>
+        <tr>
+          <td>.TranslationKey</td>
+          <td>{{ .TranslationKey }}</td>
+        </tr>
+        <tr>
+          <td>.Truncated</td>
+          <td>{{ .Truncated }}</td>
+        </tr>
+        <tr>
+          <td>.Type</td>
+          <td>{{ .Type }}</td>
+        </tr>
+        <tr>
+          <td>.Weight</td>
+          <td>{{ .Weight }}</td>
+        </tr>
+        <tr>
+          <td>.WordCount</td>
+          <td>{{ .WordCount }}</td>
+        </tr>
+        </table>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Section</summary>
+          <table>
+            <tr>
+              <td>.CurrentSection</td>
+              <td>{{ .CurrentSection }}</td>
+            </tr>
+            <tr>
+              <td>.FirstSection</td>
+              <td>{{ .FirstSection }}</td>
+            </tr>
+            <tr>
+              <td>.Parent</td>
+              <td>{{ .Parent }}</td>
+            </tr>
+            <tr>
+              <td>.Section</td>
+              <td>{{ .Section }}</td>
+            </tr>
+            <tr>
+              <td>.Sections</td>
+              <td>
+                <details>
+                  <summary>{{ len .Sections }}</summary>
+                  {{ with .Sections }}
+                    <ul>
+                      {{ range . }}
+                        <li>{{ . }}</li>
+                      {{ end }}
+                    </ul>
+                  {{ end }}
+                </details>
+              </td>
+            </tr>
+          </table>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>File</summary>
+          <table>
+            <tr>
+              <td>.File.BaseFileName</td>
+              <td>{{ with .File }}{{ .BaseFileName }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td>.File.ContentBaseName</td>
+              <td>{{ with .File }}{{ .ContentBaseName }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td>.File.Dir</td>
+              <td>{{ with .File }}{{ .Dir }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td>.File.Ext</td>
+              <td>{{ with .File }}{{ .Ext }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td>.File.Lang</td>
+              <td>{{ with .File }}{{ .Lang }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td>.File.LogicalName</td>
+              <td>{{ with .File }}{{ .LogicalName }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td>.File.Path</td>
+              <td>{{ with .File }}{{ .Path }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td>.File.TranslationBaseName</td>
+              <td>{{ with .File }}{{ .TranslationBaseName }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td>.File.UniqueID</td>
+              <td>{{ with .File }}{{ .UniqueID }}{{ end }}</td>
+            </tr>
+          </table>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Taxonomies</summary>
+          <table>
+            <tr>
+              <td>.Data.Singular</td>
+              <td>{{ with .Data.Singular }}{{ . }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td>.Data.Plural</td>
+              <td>{{ with .Data.Plural }}{{ . }}{{ end }}</td>
+            </tr>
+            <tr>
+              <td>.Data.Pages</td>
+              <td>
+                <details>
+                  <summary>{{ len .Data.Pages }}</summary>
+                  {{ with .Data.Pages }}
+                  <ul>
+                    {{ range . }}
+                      <li>{{ . }}</li>
+                    {{ end }}
+                  </ul>
+                  {{ end }}
+                </details>
+            </tr>
+            <tr>
+              <td>.Data.Terms</td>
+              <td>
+                <details>
+                  <summary>{{ if .Data.Terms }}{{ len .Data.Terms }}{{ else }}0{{ end }}</summary>
+                  {{ with .Data.Terms }}
+                  <ul>
+                    {{ range $key, $term := . }}
+                      <li>{{ $key }}: {{ len $term }} page(s)</li>
+                    {{ end }}
+                  </ul>
+                  {{ end }}
+                </details>
+            </tr>
+            <tr>
+              <td>See Also</td>
+              <td>.Site.Taxonomies</td>
+            </tr>
+          </table>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Site</summary>
+          {{ partial "helpers/debug-tables/debug-site-table" site }}
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Hugo</summary>
+          <table>
+            <tr>
+              <td>hugo.BuildDate</td>
+              <td>{{ hugo.BuildDate }}</td>
+            </tr>
+            <tr>
+              <td>hugo.CommitHash</td>
+              <td>{{ hugo.CommitHash }}</td>
+            </tr>
+            <tr>
+              <td>hugo.Environment</td>
+              <td>{{ hugo.Environment }}</td>
+            </tr>
+            <tr>
+              <td>hugo.Generator</td>
+              <td>{{ hugo.Generator }}</td>
+            </tr>
+            <tr>
+              <td>hugo.Version</td>
+              <td>{{ hugo.Version }}</td>
+            </tr>
+          </table>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>os.Stat</summary>
+          <table>
+            <tr>
+              <td>.IsDir</td>
+              <td>
+                {{ with.File }}
+                  {{ $path := print "content/" .Path }}
+                  {{ (os.Stat $path).IsDir }}
+                {{ end }}
+              </td>
+            </tr>
+            <tr>
+              <td>.Mode</td>
+              <td>
+                {{ with.File }}
+                  {{ $path := print "content/" .Path }}
+                  {{ (os.Stat $path).Mode }}
+                {{ end }}
+              </td>
+            </tr>
+            <tr>
+              <td>.ModTime</td>
+              <td>
+                {{ with.File }}
+                  {{ $path := print "content/" .Path }}
+                  {{ (os.Stat $path).ModTime }}
+                {{ end }}
+              </td>
+            </tr>
+            <tr>
+              <td>.Name</td>
+              <td>
+                {{ with.File }}
+                  {{ $path := print "content/" .Path }}
+                  {{ (os.Stat $path).Name }}
+                {{ end }}
+              </td>
+            </tr>
+            <tr>
+              <td>.Size</td>
+              <td>
+                {{ with.File }}
+                  {{ $path := print "content/" .Path }}
+                  {{ print (os.Stat $path).Size " bytes" }}
+                {{ end }}
+              </td>
+            </tr>
+          </table>
+        </details>
+      </li>
+    </ul>
+  </details>
+</section>
+{{ end }}
