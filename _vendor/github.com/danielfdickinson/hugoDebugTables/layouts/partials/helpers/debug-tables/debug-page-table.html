@@ -1,0 +1,339 @@
+{{ $curPage := .Page }}
+{{ $curSite := .Site }}
+{{ $basePage := .basePage }}
+{{ $baseSite := .baseSite }}
+{{ $expandPage := .expandPage }}
+{{ if not $basePage }}
+  {{ $basePage = $curPage }}
+{{ end }}
+{{ if not $baseSite }}
+  {{ $baseSite = $curSite }}
+{{ end }}
+{{ with $curPage }}
+  <table>
+    <tr>
+      <td>.AlternativeOutputFormats</td>
+      <td>
+        <details>
+          <summary>{{ len .AlternativeOutputFormats }}</summary>
+            {{ if .AlternativeOutputFormats }}
+            <ul>
+              {{ range .AlternativeOutputFormats }}
+                  <li>{{ .Name }}: {{ .MediaType }}</li>
+              {{ end }}
+            </ul>
+            {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Aliases</td>
+      <td><details>
+        <summary>{{ len .Aliases }}</summary>
+        {{ with .Aliases }}
+        <ul>
+          {{ range . }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+        {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Content</td>
+      <td>
+        <details>
+          <summary>{{ if .Content }}{{ len .Content }}{{ else }}0{{end}} characters</summary>
+          {{ with .Content }}
+            <code>
+              {{ . | htmlEscape | htmlUnescape }}
+            </code>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Date</td>
+      <td>{{ .Date.Local}}</td>
+    </tr>
+    <tr>
+      <td>.Description</td>
+      <td>{{ .Description }}</td>
+    </tr>
+    <tr>
+      <td>.Draft</td>
+      <td>{{ .Draft }}</td>
+    </tr>
+    <tr>
+      <td>.ExpiryDate</td>
+      <td>{{ .ExpiryDate.Local }}</td>
+    </tr>
+    <tr>
+      <td>.FuzzyWordCount</td>
+      <td>{{ .FuzzyWordCount }}</td>
+    </tr>
+    <tr>
+      <td>.IsHome</td>
+      <td>{{ .IsHome }}</td>
+    </tr>
+    <tr>
+      <td>.IsNode</td>
+      <td>{{ .IsNode }}</td>
+    </tr>
+    <tr>
+      <td>.IsPage</td>
+      <td>{{ .IsPage }}</td>
+    </tr>
+    <tr>
+      <td>.IsSection</td>
+      <td>{{ .IsSection }}</td>
+    </tr>
+    <tr>
+      <td>.IsTranslated</td>
+      <td>{{ .IsTranslated }}</td>
+    </tr>
+    <tr>
+      <td>.Keywords</td>
+      <td>{{ partial "helpers/debug-tables/debug-table-expand-item" .Keywords }}</td>
+    </tr>
+    <tr>
+      <td>.Kind</td>
+      <td>{{ .Kind }}</td>
+    </tr>
+    <tr>
+      <td>.Language</td>
+      <td>{{ .Language }}</td>
+    </tr>
+    <tr>
+      <td>.Lastmod</td>
+      <td>{{ .Lastmod.Local }}</td>
+    </tr>
+    <tr>
+      <td>.LinkTitle</td>
+      <td>{{ .LinkTitle }}</td>
+    </tr>
+    <tr>
+      <td>.Next</td>
+      <td>{{ if .Next }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .Next "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
+    </tr>
+    <tr>
+      <td>.NextInSection</td>
+      <td>{{ if .NextInSection }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .NextInSection "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
+    </tr>
+    <tr>
+      <td>.OutputFormats</td>
+        <td>
+          <details>
+            <summary>{{ len .OutputFormats }}</summary>
+              {{ if .OutputFormats }}
+              <ul>
+                {{ range .OutputFormats }}
+                    <li>{{ .Name }}: {{ .MediaType }}</li>
+                {{ end }}
+              </ul>
+              {{ end }}
+            </details>
+          </td>
+        </td>
+    </tr>
+    <tr>
+      <td>.Pages</td>
+      <td><details>
+        <summary>{{ len .Pages }}</summary>
+        {{ with .Pages }}
+          {{ partial "helpers/debug-tables/debug-page-list" (dict "Pages" . "Page" $curPage "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
+        {{ end }}
+      </details></td>
+    </tr>
+    <tr>
+      <td>.Permalink</td>
+      <td>{{ .Permalink }}</td>
+    </tr>
+    <tr>
+      <td>.Plain</td>
+      <td>
+        <details>
+          <summary>{{len .Plain}} characters</summary>
+          {{ with .Plain }}
+            <p>{{ . | htmlEscape | htmlUnescape }}</p>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.PlainWords</td>
+      <td>
+        <details>
+          <summary>{{ len .PlainWords }} words</summary>
+          {{ with .PlainWords }}
+            <ul>
+              {{ range . }}
+                <li>{{ . | htmlEscape | htmlUnescape }}</li>
+              {{ end }}
+            </p>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Prev</td>
+      <td>{{ if .Prev }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .Prev "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
+    </tr>
+    <tr>
+      <td>.PrevInSection</td>
+      <td>{{ if .PrevInSection }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .PrevInSection "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
+    </tr>
+    <tr>
+      <td>.PublishDate</td>
+      <td>{{ .PublishDate.Local }}</td>
+    </tr>
+    <tr>
+      <td>.RawContent</td>
+      <td>
+        {{ with .RawContent }}
+        <details>
+          <summary>{{ len . }} characters</summary>
+          <pre>{{ . | htmlEscape | htmlUnescape }}</pre>
+        </details>
+        {{ end }}
+      </td>
+    </tr>
+    <tr>
+      <td>.ReadingTime</td>
+      <td>~ {{ .ReadingTime }} minutes</td>
+    </tr>
+    <tr>
+      <td>.Resources</td>
+      <td>
+        <details>
+          <summary>{{ len .Resources }}</summary>
+          {{ with .Resources }}
+            <ul>
+              {{ range . }}
+                <li>{{ . }}</li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.RelPermalink</td>
+      <td>{{ .RelPermalink }}</td>
+    </tr>
+    <tr>
+      <td>.Site</td>
+      <td>
+        {{ if ne .Site $baseSite }}
+          <details>
+            <summary>{{ if .Site.Title }}{{ .Site.Title }}{{ else }}Untitled Site{{ end }}</summary>
+            {{ partial "helpers/debug-tables/debug-site-table" (dict "Site" .Site "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
+          </details>
+        {{ else }}
+          <div><span>*&nbsp;{{ if .Site.Title }}{{ .Site.Title }}{{ else }}Untitled Site{{ end }}</span></div>
+        {{ end }}
+      </td>
+    </tr>
+    <tr>
+      <td>.Sites</td>
+      <td>
+        <details>
+          <summary>{{ len .Sites }}</summary>
+          {{ with .Sites }}
+            <ul>
+              {{ range . }}
+                <li>
+                  {{ if ne . $baseSite }}
+                  <details>
+                    <summary>{{ if .Title }}{{ .Title }}{{ else }}Untitled Site{{ end }}</summary>
+                    {{ partial "helpers/debug-tables/debug-site-table" (dict "Site" . "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
+                  </details>
+                  {{ else }}
+                    <div><span>*&nbsp;{{ if .Title }}{{ .Title }}{{ else }}Untitled Site{{ end }}</span></div>
+                  {{ end }}
+                </li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Sites.First</td>
+      <td>
+        {{ if ne .Sites.First $baseSite }}
+          <details>
+            <summary>{{ if .Sites.First.Title }}{{ .Sites.First.Title }}{{ else }}Untitled Site{{ end }}</summary>
+            {{ partial "helpers/debug-tables/debug-site-table" (dict "Site" .Sites.First "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
+          </details>
+        {{ else }}
+          <div><span>*&nbsp;{{ if .Sites.First.Title }}{{ .Sites.First.Title }}{{ else }}Untitled Site{{ end }}</span></div>
+        {{ end }}
+      </td>
+    </tr>
+    <tr>
+      <td>.Summary</td>
+      <td>
+        <details>
+          <summary>{{ len .Summary }} characters</summary>
+          <code>
+            {{ .Summary | htmlEscape | htmlUnescape }}
+          </code>
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.TableOfContents</td>
+      <td>
+        <details>
+          <summary>{{ len .TableOfContents }} characters</summary>
+          <code>
+            {{ .TableOfContents | htmlEscape | htmlUnescape }}
+          </code>
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.Title</td>
+      <td>{{ .Title | htmlEscape | htmlUnescape }}</td>
+    </tr>
+    <tr>
+      <td>.Translations</td>
+      <td>
+        <details>
+          <summary>{{ len .Translations }}</summary>
+          {{ with .Translations }}
+            {{ partial "helpers/debug-tables/debug-page-list" (dict "Pages" . "Page" $curPage "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
+          {{ end }}
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td>.TranslationKey</td>
+      <td>{{ .TranslationKey }}</td>
+    </tr>
+    <tr>
+      <td>.Truncated</td>
+      <td>{{ .Truncated }}</td>
+    </tr>
+    <tr>
+      <td>.Type</td>
+      <td>{{ .Type }}</td>
+    </tr>
+    <tr>
+      <td>.Weight</td>
+      <td>{{ .Weight }}</td>
+    </tr>
+    <tr>
+      <td>.WordCount</td>
+      <td>{{ .WordCount }}</td>
+    </tr>
+    <tr>
+      <td>.Params</td>
+      <td>
+        {{- partial "helpers/debug-tables/debug-table-expand-item" .Params -}}
+      </td>
+    </tr>
+  </table>
+{{ end }}

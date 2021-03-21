@@ -1,0 +1,55 @@
+{{ $curPage := .Page }}
+{{ $curSite := .Site }}
+{{ $basePage := .basePage }}
+{{ $baseSite := .baseSite }}
+{{ $expandPage := .expandPage }}
+{{ if not $basePage }}
+  {{ $basePage = $curPage }}
+{{ end }}
+{{ if not $baseSite }}
+  {{ $baseSite = $curSite }}
+{{ end }}
+{{ with $curPage }}
+<table>
+    <tr>
+        <td>.Data.Singular</td>
+        <td>{{ with .Data.Singular }}{{ . }}{{ end }}</td>
+    </tr>
+    <tr>
+        <td>.Data.Plural</td>
+        <td>{{ with .Data.Plural }}{{ . }}{{ end }}</td>
+    </tr>
+    {{ if not (or .IsSection .IsHome) }}
+    <tr>
+        <td>.Data.Pages</td>
+        <td>
+            <details>
+                <summary>{{ len .Data.Pages }}</summary>
+                {{ with .Data.Pages }}
+                    {{ partial "helpers/debug-tables/debug-page-list" (dict "Pages" . "Page" $curPage "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
+                {{ end }}
+            </details>
+        </td>
+    </tr>
+    {{ end }}
+    <tr>
+        <td>.Data.Terms</td>
+        <td>
+                <details>
+                <summary>{{ if .Data.Terms }}{{ len .Data.Terms }}{{ else }}0{{ end }}</summary>
+                {{ with .Data.Terms }}
+                <ul>
+                    {{ range $key, $term := . }}
+                    <li>{{ $key }}: {{ len $term }} page(s)</li>
+                    {{ end }}
+                </ul>
+                {{ end }}
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td>See Also</td>
+        <td>.Site.Taxonomies</td>
+    </tr>
+</table>
+{{ end }}

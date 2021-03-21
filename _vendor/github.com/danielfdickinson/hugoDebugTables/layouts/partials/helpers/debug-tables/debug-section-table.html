@@ -1,0 +1,46 @@
+{{ $curPage := .Page }}
+{{ $curSite := .Site }}
+{{ $basePage := .basePage }}
+{{ $baseSite := .baseSite }}
+{{ $expandPage := .expandPage }}
+{{ if not $basePage }}
+  {{ $basePage = $curPage }}
+{{ end }}
+{{ if not $baseSite }}
+  {{ $baseSite = $curSite }}
+{{ end }}
+{{ with $curPage }}
+<table>
+    <tr>
+        <td>.CurrentSection</td>
+        <td>{{ if .CurrentSection }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .CurrentSection "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}{{ end }}</td>
+    </tr>
+    <tr>
+        <td>.FirstSection</td>
+        <td>{{ if .FirstSection }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .FirstSection "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}{{ end }}</td>
+    </tr>
+    <tr>
+        <td>.Parent</td>
+        <td>{{ if .Parent }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .Parent "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
+    </tr>
+    <tr>
+        <td>.Section</td>
+        <td>{{ .Section }}</td>
+    </tr>
+    <tr>
+        <td>.Sections</td>
+        <td>
+        <details>
+            <summary>{{ len .Sections }}</summary>
+            {{ with .Sections }}
+            <ul>
+                {{ range . }}
+                <li>{{ if . }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" . "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</li>
+                {{ end }}
+            </ul>
+            {{ end }}
+        </details>
+        </td>
+    </tr>
+</table>
+{{- end -}}

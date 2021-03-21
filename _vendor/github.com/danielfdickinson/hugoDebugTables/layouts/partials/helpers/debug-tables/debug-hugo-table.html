@@ -1,0 +1,35 @@
+{{ $curPage := .Page }}
+{{ $curSite := .Site }}
+{{ $basePage := .basePage }}
+{{ $baseSite := .baseSite }}
+{{ $expandPage := .expandPage }}
+{{ if not $basePage }}
+  {{ $basePage = $curPage }}
+{{ end }}
+{{ if not $baseSite }}
+  {{ $baseSite = $curSite }}
+{{ end }}
+{{ with $curPage }}
+<table>
+    <tr>
+        <td>hugo.BuildDate</td>
+        <td>{{ hugo.BuildDate }}</td>
+    </tr>
+    <tr>
+        <td>hugo.CommitHash</td>
+        <td>{{ hugo.CommitHash }}</td>
+    </tr>
+    <tr>
+        <td>hugo.Environment</td>
+        <td>{{ hugo.Environment }}</td>
+    </tr>
+    <tr>
+        <td>hugo.Generator</td>
+        <td>{{ hugo.Generator }}</td>
+    </tr>
+    <tr>
+        <td>hugo.Version</td>
+        <td>{{ hugo.Version }}</td>
+    </tr>
+</table>
+{{ end }}

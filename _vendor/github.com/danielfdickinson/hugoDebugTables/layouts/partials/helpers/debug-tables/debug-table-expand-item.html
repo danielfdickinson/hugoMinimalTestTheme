@@ -1,0 +1,22 @@
+{{- $curCtx := . -}}
+{{- if reflect.IsSlice $curCtx -}}
+    <details>
+        <summary>{{ len $curCtx }}</summary>
+        <ul>
+            {{- range $curCtx -}}
+                <li>{{- partial "helpers/debug-tables/debug-table-expand-var" (dict "value" .) }}</li>
+            {{- end -}}
+        </ul>
+    </details>
+{{- else if reflect.IsMap $curCtx -}}
+    <details>
+        <summary>{{ len $curCtx }}</summary>
+        <ul>
+            {{- range $key, $value := $curCtx -}}
+                <li>{{- partial "helpers/debug-tables/debug-table-expand-var" (dict "key" $key "value" $value) }}</li>
+            {{- end -}}
+        </ul>
+    </details>
+{{- else -}}
+    {{- partial "helpers/debug-tables/debug-table-expand-var" (dict "value" $curCtx) }}
+{{- end -}}

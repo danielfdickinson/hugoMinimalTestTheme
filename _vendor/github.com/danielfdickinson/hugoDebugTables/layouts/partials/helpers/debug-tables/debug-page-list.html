@@ -1,0 +1,16 @@
+{{ $curPage := .Page }}
+{{ $basePage := .basePage }}
+{{ $curSite := .Site }}
+{{ $baseSite := .baseSite }}
+{{ $expandPage := .expandPage }}
+{{ if not $basePage }}
+   {{ $basePage = $curPage }}
+{{ end }}
+{{ if not $baseSite }}
+   {{ $baseSite = $curSite }}
+{{ end }}
+<ul>
+    {{ range .Pages }}
+        <li>{{ partial "helpers/debug-tables/return-page-details" (dict "Page" . "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage ) }}</li>
+    {{ end }}
+</ul>

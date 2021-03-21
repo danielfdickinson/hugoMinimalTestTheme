@@ -1,3 +1,15 @@
+{{ $curPage := .Page }}
+{{ $curSite := .Site }}
+{{ $basePage := .basePage }}
+{{ $baseSite := .baseSite }}
+{{ $expandPage := .expandPage }}
+{{ if not $basePage }}
+  {{ $basePage = $curPage }}
+{{ end }}
+{{ if not $baseSite }}
+  {{ $baseSite = $curSite }}
+{{ end }}
+{{ with $curSite }}
 <table>
     <tr>
       <td>.AllPages</td>
@@ -5,29 +17,14 @@
         <details>
           <summary>{{ len .AllPages }}</summary>
           {{ with .AllPages }}
-          <ul>
-            {{ range . }}
-              <li>{{ . }}</li>
-            {{ end }}
-          </ul>
+            {{ partial "helpers/debug-tables/debug-page-list" (dict "Pages" . "Page" $curPage "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
           {{ end }}
         </details>
       </td>
     </tr>
     <tr>
       <td>.Author</td>
-      <td>
-        <details>
-          <summary>{{ len .Author }} keys</summary>
-          {{ with .Author }}
-          <ul>
-            {{ range $key, $value := .Author }}
-              <li>$key: $value</li>
-            {{ end }}
-          </ul>
-          {{ end }}
-        </details>
-      </td>
+      <td>{{ partial "helpers/debug-tables/debug-table-expand-item" .Author }}</td>
     </tr>
     <tr>
       <td>.BaseURL</td>
@@ -51,7 +48,7 @@
     </tr>
     <tr>
       <td>.Home</td>
-      <td>{{ .Home }}</td>
+      <td>{{ if .Home }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .Home "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
     </tr>
     <tr>
       <td>.IsMultiLingual</td>
@@ -136,11 +133,7 @@
         <details>
           <summary>{{ len .Pages }}</summary>
           {{ with .Pages }}
-          <ul>
-            {{ range . }}
-              <li>{{ . }}</li>
-            {{ end }}
-            </ul>
+            {{ partial "helpers/debug-tables/debug-page-list" (dict "Pages" . "Page" $curPage "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
           {{ end }}
         </details>
       </td>
@@ -151,26 +144,18 @@
         <details>
           <summary>{{ len .RegularPages }}</summary>
           {{ with .RegularPages }}
-          <ul>
-            {{ range . }}
-              <li>{{ . }}</li>
-            {{ end }}
-            </ul>
+            {{ partial "helpers/debug-tables/debug-page-list" (dict "Pages" . "Page" $curPage "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
           {{ end }}
         </details>
       </td>
     </tr>
     <tr>
-      <td>.Section</td>
+      <td>.Sections</td>
       <td>
         <details>
           <summary>{{ len .Sections }}</summary>
           {{ with .Sections }}
-          <ul>
-            {{ range . }}
-              <li>{{ . }}</li>
-            {{ end }}
-            </ul>
+            {{ partial "helpers/debug-tables/debug-page-list" (dict "Pages" . "Page" $curPage "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
           {{ end }}
         </details>
       </td>
@@ -193,11 +178,7 @@
                     <details>
                     <summary>{{ $key2 }}: {{ len $value2 }}</summary>
                     {{ with $value2 }}
-                    <ul>
-                      {{ range . }}
-                        <li>{{ . }}</li>
-                      {{ end }}
-                    </ul>
+                      {{ partial "helpers/debug-tables/debug-page-list" (dict "Pages" . "Page" $curPage "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
                     {{ end }}
                     </details>
                   </li>
@@ -219,16 +200,8 @@
     <tr>
       <td>.Params</td>
       <td>
-        <details>
-          <summary>{{ len .Params }}</summary>
-          {{ with .Params }}
-          <ul>
-            {{ range $key, $value := . }}
-              <li>{{ $key }}: {{ $value }}</li>
-            {{ end }}
-          </ul>
-          {{ end }}
-        </details>
+        {{- partial "helpers/debug-tables/debug-table-expand-item" .Params -}}
       </td>
     </tr>
   </table>
+{{ end }}
