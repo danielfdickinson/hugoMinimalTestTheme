@@ -12,10 +12,10 @@
 {{ with $curPage }}
     {{ if and (ne . $basePage) (eq $expandPage true) }}
         <details>
-            <summary>{{ partial "helpers/debug-tables/return-page-title" . }}</summary>
-            {{ partial "helpers/debug-tables/debug-page-table" (dict "Page" . "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
+            <summary>{{ partial "helpers/debug-tables/debug-helpers/return-page-title" . }}</summary>
+            {{ partial "helpers/debug-tables/tables/page" (dict "Page" . "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
         </details>
     {{ else }}
-        <div><span>{{if eq . $basePage }}*&nbsp;{{ end }}{{ partial "helpers/debug-tables/return-page-title" . }}</span></div>
+        <div><span>{{if eq . $basePage }}*&nbsp;{{ end }}{{ partial "helpers/debug-tables/debug-helpers/return-page-title" . }}</span></div>
     {{ end }}
 {{ end }}

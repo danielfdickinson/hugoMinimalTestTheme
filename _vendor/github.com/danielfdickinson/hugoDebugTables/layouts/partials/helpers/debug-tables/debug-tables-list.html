@@ -15,48 +15,54 @@
 <section aria-label="Hugo Debug Section">
   <details>
     <summary>Hugo Debug Table</summary>
-    <i>Idea and initial HTML source from <a href="https://raw.githubusercontent.com/zwbetz-gh/starter-hugo-debug-site/master/layouts/partials/debug-table.html">zwbetz-gh/starter-hugo-debug-site debug-table</a></i>
     <ul>
       <li>
         <details>
           <summary>Page</summary>
-          {{- partial "helpers/debug-tables/debug-page-table" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) -}}
+          {{- partial "helpers/debug-tables/tables/page" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) -}}
         </details>
       </li>
       <li>
         <details>
           <summary>Section</summary>
-          {{- partial "helpers/debug-tables/debug-section-table"  (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) -}}
+          {{- partial "helpers/debug-tables/tables/section"  (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) -}}
         </details>
       </li>
       <li>
         <details>
           <summary>File</summary>
-          {{- partial "helpers/debug-tables/debug-file-table" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) -}}
+          {{- partial "helpers/debug-tables/tables/file" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) -}}
         </details>
       </li>
       <li>
         <details>
           <summary>Taxonomies</summary>
-          {{ partial "helpers/debug-tables/debug-taxonomy-table" (dict "Site" site "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
+          {{ partial "helpers/debug-tables/tables/taxonomy" (dict "Site" site "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
         </details>
       </li>
       <li>
         <details>
           <summary>Site</summary>
-          {{ partial "helpers/debug-tables/debug-site-table" (dict "Site" site "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
+          {{ partial "helpers/debug-tables/tables/site" (dict "Site" site "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
         </details>
       </li>
       <li>
         <details>
           <summary>Hugo</summary>
-          {{ partial "helpers/debug-tables/debug-hugo-table" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) }}
+          {{ partial "helpers/debug-tables/tables/hugo" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) }}
         </details>
       </li>
       <li>
         <details>
           <summary>os.Stat</summary>
-          {{ partial "helpers/debug-tables/debug-os-stat-table" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) }}
+          {{ partial "helpers/debug-tables/tables/os-stat" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) }}
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Acknowledgements</summary>
+          <p><i>Idea for debug table and initial HTML source from <a href="https://raw.githubusercontent.com/zwbetz-gh/starter-hugo-debug-site/master/layouts/partials/debug-table.html">zwbetz-gh/starter-hugo-debug-site debug-table</a></i></p>
+          <p><i>Current version from <a href="https://github.com/danielfdickinson/hugoDebugTables">github.com/danielfdickinson/hugoDebugTables</a></i></p>
         </details>
       </li>
     </ul>

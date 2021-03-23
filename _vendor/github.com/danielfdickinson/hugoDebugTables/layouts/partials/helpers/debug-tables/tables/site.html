@@ -24,7 +24,7 @@
     </tr>
     <tr>
       <td>.Author</td>
-      <td>{{ partial "helpers/debug-tables/debug-table-expand-item" .Author }}</td>
+      <td>{{ partial "helpers/debug-tables/debug-helpers/expand-item" .Author }}</td>
     </tr>
     <tr>
       <td>.BaseURL</td>
@@ -48,7 +48,7 @@
     </tr>
     <tr>
       <td>.Home</td>
-      <td>{{ if .Home }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .Home "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
+      <td>{{ if .Home }}{{ partial "helpers/debug-tables/debug-helpers/return-page-details" (dict "Page" .Home "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
     </tr>
     <tr>
       <td>.IsMultiLingual</td>
@@ -115,7 +115,7 @@
                 {{ with $value }}
                 <ul>
                   {{ range . }}
-                  <li>{{ partial "helpers/debug-tables/debug-menus-table" . }}</li>
+                  <li>{{ partial "helpers/debug-tables/tables/menus" . }}</li>
                   {{ end }}
                 <ul>
                 {{ end }}
@@ -200,7 +200,7 @@
     <tr>
       <td>.Params</td>
       <td>
-        {{- partial "helpers/debug-tables/debug-table-expand-item" .Params -}}
+        {{- partial "helpers/debug-tables/debug-helpers/expand-item" .Params -}}
       </td>
     </tr>
   </table>

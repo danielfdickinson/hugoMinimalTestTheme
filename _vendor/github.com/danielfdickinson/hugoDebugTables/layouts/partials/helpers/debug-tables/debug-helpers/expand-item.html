@@ -4,7 +4,7 @@
         <summary>{{ len $curCtx }}</summary>
         <ul>
             {{- range $curCtx -}}
-                <li>{{- partial "helpers/debug-tables/debug-table-expand-var" (dict "value" .) }}</li>
+                <li>{{- partial "helpers/debug-tables/debug-helpers/expand-var" (dict "value" .) }}</li>
             {{- end -}}
         </ul>
     </details>
@@ -13,10 +13,10 @@
         <summary>{{ len $curCtx }}</summary>
         <ul>
             {{- range $key, $value := $curCtx -}}
-                <li>{{- partial "helpers/debug-tables/debug-table-expand-var" (dict "key" $key "value" $value) }}</li>
+                <li>{{- partial "helpers/debug-tables/debug-helpers/expand-var" (dict "key" $key "value" $value) }}</li>
             {{- end -}}
         </ul>
     </details>
 {{- else -}}
-    {{- partial "helpers/debug-tables/debug-table-expand-var" (dict "value" $curCtx) }}
+    {{- partial "helpers/debug-tables/debug-helpers/expand-var" (dict "value" $curCtx) }}
 {{- end -}}

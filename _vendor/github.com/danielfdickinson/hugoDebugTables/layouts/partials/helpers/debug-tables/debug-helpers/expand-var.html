@@ -7,7 +7,7 @@
             <summary>{{- $key }}: {{ len $value -}}</summary>
             <ul>
                 {{- range $key2, $value2 := $value -}}
-                    <li>{{- partial "helpers/debug-tables/debug-table-expand-var" (dict "key" $key2 "value" $value2) }}</li>
+                    <li>{{- partial "helpers/debug-tables/debug-helpers/expand-var" (dict "key" $key2 "value" $value2) }}</li>
                 {{- end -}}
             </ul>
             </details>
@@ -16,7 +16,7 @@
             <summary>{{- $key }}: {{ len $value -}}</summary>
                 <ul>
                     {{- range $value -}}
-                        <li>{{- partial "helpers/debug-tables/debug-table-expand-item" . -}}</li>
+                        <li>{{- partial "helpers/debug-tables/debug-helpers/expand-item" . -}}</li>
                     {{- end -}}
                 </ul>
         </details>
@@ -25,11 +25,11 @@
     {{- end -}}
 {{- else -}}
     {{- if reflect.IsSlice $value -}}
-        {{- partial "helpers/debug-tables/debug-table-expand-item" $value -}}
+        {{- partial "helpers/debug-tables/debug-helpers/expand-item" $value -}}
     {{- else if reflect.IsMap $value -}}
         <details>
             <summary>{{- $key }}: {{ len $value -}}</summary>
-                {{- partial "helpers/debug-tables/debug-table-expand-item" $value -}}
+                {{- partial "helpers/debug-tables/debug-helpers/expand-item" $value -}}
         </details>
     {{- else -}}
         {{- if $key -}}

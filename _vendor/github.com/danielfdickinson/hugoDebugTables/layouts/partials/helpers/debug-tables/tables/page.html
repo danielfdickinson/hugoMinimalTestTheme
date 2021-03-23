@@ -95,7 +95,7 @@
     </tr>
     <tr>
       <td>.Keywords</td>
-      <td>{{ partial "helpers/debug-tables/debug-table-expand-item" .Keywords }}</td>
+      <td>{{ partial "helpers/debug-tables/debug-helpers/expand-item" .Keywords }}</td>
     </tr>
     <tr>
       <td>.Kind</td>
@@ -115,11 +115,11 @@
     </tr>
     <tr>
       <td>.Next</td>
-      <td>{{ if .Next }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .Next "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
+      <td>{{ if .Next }}{{ partial "helpers/debug-tables/debug-helpers/return-page-details" (dict "Page" .Next "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
     </tr>
     <tr>
       <td>.NextInSection</td>
-      <td>{{ if .NextInSection }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .NextInSection "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
+      <td>{{ if .NextInSection }}{{ partial "helpers/debug-tables/debug-helpers/return-page-details" (dict "Page" .NextInSection "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
     </tr>
     <tr>
       <td>.OutputFormats</td>
@@ -178,11 +178,11 @@
     </tr>
     <tr>
       <td>.Prev</td>
-      <td>{{ if .Prev }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .Prev "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
+      <td>{{ if .Prev }}{{ partial "helpers/debug-tables/debug-helpers/return-page-details" (dict "Page" .Prev "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
     </tr>
     <tr>
       <td>.PrevInSection</td>
-      <td>{{ if .PrevInSection }}{{ partial "helpers/debug-tables/return-page-details" (dict "Page" .PrevInSection "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
+      <td>{{ if .PrevInSection }}{{ partial "helpers/debug-tables/debug-helpers/return-page-details" (dict "Page" .PrevInSection "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false) }}{{ end }}</td>
     </tr>
     <tr>
       <td>.PublishDate</td>
@@ -228,7 +228,7 @@
         {{ if ne .Site $baseSite }}
           <details>
             <summary>{{ if .Site.Title }}{{ .Site.Title }}{{ else }}Untitled Site{{ end }}</summary>
-            {{ partial "helpers/debug-tables/debug-site-table" (dict "Site" .Site "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
+            {{ partial "helpers/debug-tables/tables/site" (dict "Site" .Site "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
           </details>
         {{ else }}
           <div><span>*&nbsp;{{ if .Site.Title }}{{ .Site.Title }}{{ else }}Untitled Site{{ end }}</span></div>
@@ -247,7 +247,7 @@
                   {{ if ne . $baseSite }}
                   <details>
                     <summary>{{ if .Title }}{{ .Title }}{{ else }}Untitled Site{{ end }}</summary>
-                    {{ partial "helpers/debug-tables/debug-site-table" (dict "Site" . "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
+                    {{ partial "helpers/debug-tables/tables/site" (dict "Site" . "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
                   </details>
                   {{ else }}
                     <div><span>*&nbsp;{{ if .Title }}{{ .Title }}{{ else }}Untitled Site{{ end }}</span></div>
@@ -265,7 +265,7 @@
         {{ if ne .Sites.First $baseSite }}
           <details>
             <summary>{{ if .Sites.First.Title }}{{ .Sites.First.Title }}{{ else }}Untitled Site{{ end }}</summary>
-            {{ partial "helpers/debug-tables/debug-site-table" (dict "Site" .Sites.First "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
+            {{ partial "helpers/debug-tables/tables/site" (dict "Site" .Sites.First "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
           </details>
         {{ else }}
           <div><span>*&nbsp;{{ if .Sites.First.Title }}{{ .Sites.First.Title }}{{ else }}Untitled Site{{ end }}</span></div>
@@ -332,7 +332,7 @@
     <tr>
       <td>.Params</td>
       <td>
-        {{- partial "helpers/debug-tables/debug-table-expand-item" .Params -}}
+        {{- partial "helpers/debug-tables/debug-helpers/expand-item" .Params -}}
       </td>
     </tr>
   </table>

@@ -5,7 +5,7 @@
         {{- partial "helpers/debug-tables/debug-tables-list" (dict "Page" .Page "Site" .Page.Site "expandPage" (.Get 0)) -}}
     {{- end -}}
 {{- else -}}
-    {{- partial (printf "helpers/debug-tables/debug-%s-table" (.Get "table"))
+    {{- partial (printf "helpers/debug-tables/tables/%s" (.Get "table"))
       (dict
         "Page" .Page
         "basePage" .Page

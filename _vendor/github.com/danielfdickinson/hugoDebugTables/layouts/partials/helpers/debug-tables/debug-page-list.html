@@ -11,6 +11,6 @@
 {{ end }}
 <ul>
     {{ range .Pages }}
-        <li>{{ partial "helpers/debug-tables/return-page-details" (dict "Page" . "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage ) }}</li>
+        <li>{{ partial "helpers/debug-tables/debug-helpers/return-page-details" (dict "Page" . "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage ) }}</li>
     {{ end }}
 </ul>
