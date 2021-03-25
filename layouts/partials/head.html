@@ -1,3 +1,6 @@
 <head>
     <title>{{- partial "return-helpers/title" . -}}</title>
+    {{ if eq hugo.Environment "development" -}}
+    <link rel="stylesheet" href="/css/hugo-debug-tables.css" />
+    {{- end }}
 </head>
