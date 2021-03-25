@@ -1,0 +1,32 @@
+{{- $curPage := . -}}
+{{- if ne (.Param "showTopBarMenu") false }}
+<header class="header-test-min">
+    <nav aria-label="Main Site Menu"
+    class="bar-test-min menubar-test-min test-mainmenu-min">
+        <ul class="list-test-min"><li class="list-item-test-min{{- if eq $curPage site.Home }} current-menu-is-test-min{{- end -}}">
+                <span class="link-wrapper-test-min"><a
+                class="link-test-min" href="{{- site.Home.RelPermalink -}}">{{-
+                partial "return-helpers/title" site.Home -}}</a></span>
+            </li>
+        {{- range .Site.Home.Pages -}}
+            {{- if le (len (where .Site.Menus.main "URL" (.RelPermalink))) 0 -}}
+            <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
+                <span class="link-wrapper-test-min"><a
+                href="{{- .RelPermalink -}}" class="link-test-min">{{-
+                partial "return-helpers/title" . -}}</a></span>
+            </li>
+            {{- end -}}
+        {{- end -}}
+        {{- range .Site.Menus.main -}}
+            <li class="list-item-test-min{{- if
+                $curPage.HasMenuCurrent "main" .
+                }} current-menu-has-test-min{{- else if
+                $curPage.IsMenuCurrent "main" . }} current-menu-is-test-min{{- end -}}">
+                <span class="link-wrapper-test-min"><a
+                href="{{- .URL -}}" class="link-test-min">{{- .Name -}}</a></span>
+            </li>
+        {{- end -}}
+        </ul>
+    </nav>
+</header>
+{{- end }}

@@ -1,0 +1,21 @@
+.test-warningold-min {
+    background-color: #cff;
+    visibility: visible;
+}
+
+.section-debug-hugo {
+    display: none;
+    visibility: hidden;
+}
+
+@supports (visibility: visible) and (visibility: hidden) and (display: block) and (display: none) and (grid-area: an-area) {
+    .test-warningold-min {
+        display: none;
+        visibility: hidden;
+    }
+
+    .section-debug-hugo {
+        display: block;
+        visibility: visible;
+    }
+}

@@ -1,5 +1,11 @@
-<ul>
-    {{ range .Pages }}
-        <li><a href="{{ .RelPermalink }}">{{ partial "return-helpers/title" . }}</a></li>
+<ul class="section-list-test-min">
+{{ if .Data.Terms }}
+    {{ range .Data.Terms }}
+    <li class="list-item-test-min"><a class="link-test-min" href="{{ .Page.RelPermalink }}">{{ partial "return-helpers/title" .Page }}</a> ({{- .Count -}})</li>
     {{ end }}
+{{ else }}
+    {{ range .Pages }}
+        <li class="list-item-test-min"><a class="link-test-min" href="{{ .RelPermalink }}">{{ partial "return-helpers/title" . }}</a></li>
+    {{ end }}
+{{ end }}
 </ul>
