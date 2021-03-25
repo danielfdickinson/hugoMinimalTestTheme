@@ -1,47 +1,26 @@
-<table>
-    <tr>
-        <td>.IsDir</td>
-        <td>
-        {{ with.File }}
-            {{ $path := print "content/" .Path }}
-            {{ (os.Stat $path).IsDir }}
-        {{ end }}
-        </td>
-    </tr>
-    <tr>
-        <td>.Mode</td>
-        <td>
-        {{ with.File }}
-            {{ $path := print "content/" .Path }}
-            {{ (os.Stat $path).Mode }}
-        {{ end }}
-        </td>
-    </tr>
-    <tr>
-        <td>.ModTime</td>
-        <td>
-        {{ with.File }}
-            {{ $path := print "content/" .Path }}
-            {{ (os.Stat $path).ModTime }}
-        {{ end }}
-        </td>
-    </tr>
-    <tr>
-        <td>.Name</td>
-        <td>
-        {{ with.File }}
-            {{ $path := print "content/" .Path }}
-            {{ (os.Stat $path).Name }}
-        {{ end }}
-        </td>
-    </tr>
-    <tr>
-        <td>.Size</td>
-        <td>
-        {{ with.File }}
-            {{ $path := print "content/" .Path }}
-            {{ print (os.Stat $path).Size " bytes" }}
-        {{ end }}
-        </td>
-    </tr>
-</table>
+{{- $curPage := .Page -}}
+{{- $curSite := .Site -}}
+{{- $basePage := .basePage -}}
+{{- $baseSite := .baseSite -}}
+{{- $expandPage := .expandPage -}}
+{{- with $curPage -}}
+    {{- $tableVals := (dict) -}}
+    {{- with .File -}}
+        {{- $path := print "content/" .Path -}}
+        {{- $osStatPath := os.Stat $path -}}
+        {{- with $osStatPath -}}
+            {{- $tableVals = (dict
+                ".IsDir" .IsDir
+                ".Mode" .Mode
+                ".ModTime" .ModTime
+                ".Name" .Name
+                ".Size (bytes)" .Size
+            ) -}}
+        {{- end -}}
+    {{- else -}}
+        {{- $tableVals = (dict
+            "Virtual page (no content file)" true
+     ) -}}
+    {{- end -}}
+    {{- partial "helpers/debug-tables/tables/table-html" $tableVals }}
+{{- end }}
