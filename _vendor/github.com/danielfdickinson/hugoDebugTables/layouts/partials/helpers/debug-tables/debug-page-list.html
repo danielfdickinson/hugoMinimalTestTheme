@@ -1,16 +1,10 @@
-{{ $curPage := .Page }}
-{{ $basePage := .basePage }}
-{{ $curSite := .Site }}
-{{ $baseSite := .baseSite }}
-{{ $expandPage := .expandPage }}
-{{ if not $basePage }}
-   {{ $basePage = $curPage }}
-{{ end }}
-{{ if not $baseSite }}
-   {{ $baseSite = $curSite }}
-{{ end }}
-<ul>
-    {{ range .Pages }}
-        <li>{{ partial "helpers/debug-tables/debug-helpers/return-page-details" (dict "Page" . "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage ) }}</li>
-    {{ end }}
+{{- $curPage := .Page -}}
+{{- $curSite := .Site -}}
+{{- $basePage := .basePage -}}
+{{- $baseSite := .baseSite -}}
+{{- $expandPage := .expandPage -}}
+<ul class="list-debug-hugo debug-pages-hugo">
+    {{- range .Pages -}}
+        {{- partial "helpers/debug-tables/debug-helpers/return-page-details" (dict "Page" . "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage ) -}}
+    {{- end -}}
 </ul>

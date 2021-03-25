@@ -1,58 +1,16 @@
-<table>
-    <tr>
-        <td>.Identifier</td>
-        <td>{{ .Identifier }}</td>
-    </tr>
-    <tr>
-        <td>.Menu</td>
-        <td>{{ .Menu }}</td>
-    </tr>
-    <tr>
-        <td>.Name</td>
-        <td>{{ .Name }}</td>
-    </tr>
-    <tr>
-        <td>.Page</td>
-        <td>{{ .Page }}</td>
-    </tr>
-    <tr>
-        <td>.Parent</td>
-        <td>{{ .Parent }}</td>
-    </tr>
-    <tr>
-        <td>.Pre</td>
-        <td><code>{{ .Pre | htmlEscape | htmlUnescape }}</code></td>
-    </tr>
-    <tr>
-        <td>.Post</td>
-        <td><code>{{ .Post | htmlEscape | htmlUnescape }}</code></td>
-    </tr>
-    <tr>
-        <td>.URL</td>
-        <td>{{ .URL }}</td>
-    </tr>
-    <tr>
-        <td>.Weight</td>
-        <td>{{ .Weight }}</td>
-    </tr>
-    <tr>
-        <td>.Children</td>
-        <td>
-            <details>
-                <summary>{{ len .Children }}</summary>
-                {{ with .Children }}
-                <ul>
-                    {{ range $key, $value := . }}
-                    <li>
-                        <details>
-                            <summary>{{ $key }}: {{ len $value }}</summary>
-                            {{ partial "helpers/debug-tables/tables/menus" . }}
-                        </details>
-                    </li>
-                    {{ end }}
-                </ul>
-                {{ end }}
+{{- $menus := . -}}
+{{- range $key, $value := $menus -}}
+    <details class="details-debug-hugo">
+        <summary class="summary-debug-hugo">{{- printf "%s: %d" $key (len $value) -}}</summary>
+    {{- if gt (len $value) 0 -}}
+        <ul class="list-debug-hugo debug-menus-hugo">
+        {{- range $value }}
+            <details class="details-debug-hugo">
+            <summary>{{- .Identifier -}}</summary>
+            {{- partial "helpers/debug-tables/tables/menu" . -}}
             </details>
-        </td>
-    </tr>
-</table>
+        {{- end }}
+        </ul>
+    {{- end -}}
+    </details>
+{{- end }}

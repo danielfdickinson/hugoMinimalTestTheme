@@ -5,67 +5,42 @@
 {{- $baseSite := .Site -}}
 {{- $expandPage := false -}}
 {{- if ($curPage.Param "debugExpandPage") -}}
-  {{- $expandPage = (.Param "debugExpandPage") -}}
+  {{- $expandPage = ($curPage.Param "debugExpandPage") -}}
 {{- end -}}
 {{- if reflect.IsMap . -}}
   {{- if (index . "expandPage") -}}
     {{- $expandPage = .expandPage -}}
   {{- end -}}
+{{- end }}
+<section class="section-debug-hugo debug-variables-hugo" aria-label="Hugo Debug Section">
+    <details class="details-debug-hugo">
+        <summary class="summary-debug-hugo">Hugo Debug Table</summary>
+        <ul class="list-debug-hugo debug-tables">
+{{- $tablesToShow := (slice "page") -}}
+{{- $tablesToShow = $tablesToShow | append "section" -}}
+{{- $tablesToShow = $tablesToShow | append "file" -}}
+{{- if in (slice "taxonomy" "term") $curPage.Kind -}}
+    {{- $tablesToShow = $tablesToShow | append "taxonomy" -}}
 {{- end -}}
-<section aria-label="Hugo Debug Section">
-  <details>
-    <summary>Hugo Debug Table</summary>
-    <ul>
-      <li>
-        <details>
-          <summary>Page</summary>
-          {{- partial "helpers/debug-tables/tables/page" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) -}}
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary>Section</summary>
-          {{- partial "helpers/debug-tables/tables/section"  (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) -}}
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary>File</summary>
-          {{- partial "helpers/debug-tables/tables/file" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) -}}
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary>Taxonomies</summary>
-          {{ partial "helpers/debug-tables/tables/taxonomy" (dict "Site" site "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary>Site</summary>
-          {{ partial "helpers/debug-tables/tables/site" (dict "Site" site "baseSite" $baseSite "Page" $curPage "basePage" $basePage "expandPage" $expandPage) }}
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary>Hugo</summary>
-          {{ partial "helpers/debug-tables/tables/hugo" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) }}
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary>os.Stat</summary>
-          {{ partial "helpers/debug-tables/tables/os-stat" (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) }}
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary>Acknowledgements</summary>
-          <p><i>Idea for debug table and initial HTML source from <a href="https://raw.githubusercontent.com/zwbetz-gh/starter-hugo-debug-site/master/layouts/partials/debug-table.html">zwbetz-gh/starter-hugo-debug-site debug-table</a></i></p>
-          <p><i>Current version from <a href="https://github.com/danielfdickinson/hugoDebugTables">github.com/danielfdickinson/hugoDebugTables</a></i></p>
-        </details>
-      </li>
-    </ul>
-  </details>
+{{- $tablesToShow = $tablesToShow | append "site" -}}
+{{- $tablesToShow = $tablesToShow | append "hugo" -}}
+{{- if $curPage.File -}}
+    {{- $tablesToShow = $tablesToShow | append "os-stat" -}}
+{{- end -}}
+{{- range $tablesToShow }}
+            <details class="details-debug-hugo">
+              <summary class="summary-debug-hugo">{{ if ne . "os-stat" }}{{ . | humanize | title }}{{ else }}os.Stat{{ end }}</summary>
+    {{- partial (printf "helpers/debug-tables/tables/%s" .) (dict "Page" $curPage "basePage" $basePage "Site" $curSite  "baseSite" $baseSite "expandPage" $expandPage ) }}
+            </details>
+{{- end }}
+            <details class="details-debug-hugo debug-acknowledgements-hugo">
+                <summary class="summary-debug-hugo">Acknowledgements</summary>
+                <div class="list-debug-hugo">
+                    <p class="list-item-debug-hugo"><i>Idea for debug table and initial HTML source from <a href="https://raw.githubusercontent.com/zwbetz-gh/starter-hugo-debug-site/master/layouts/partials/debug-table.html">zwbetz-gh/starter-hugo-debug-site debug-table</a></i></p>
+                    <p class="list-item-debug-hugo"><i>Current version from <a href="https://github.com/danielfdickinson/hugoDebugTables">github.com/danielfdickinson/hugoDebugTables</a></i></p>
+                </div>
+            </details>
+        </ul>
+    </details>
 </section>
 {{ end }}
