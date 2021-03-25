@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
-    {{- partial "head.html" . -}}
-    <body>
-        {{- partial "header.html" . -}}
-        <div id="content">
-        {{- block "main" . }}{{- end }}
-        </div>
-        {{- partial "footer.html" . -}}
-
-        {{ partial "helpers/debug-tables/debug-tables-list" . }}
-    </body>
+{{- partial "head.html" . }}
+<body>
+{{- if eq (.Param "testStylesInclude") true }}
+<div class="test-warningold-min bar-test-min heading-general-test-min">
+    Your browser lacks features required by this site (such browsers include Internet Explorer 11).
+</div>
+{{- end }}
+{{- partial "header" . }}
+<div class="test-scrollable-min">
+    {{- partial "page-title" . }}
+    <div class="main-test-min" id="content">
+{{- block "main" . }}{{- end }}
+{{- partial "page-navigation" . }}
+    </div>
+{{- partial "footer" . -}}
+</div>
+</body>
 </html>

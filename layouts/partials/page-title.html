@@ -1,0 +1,11 @@
+{{/* Only allowed one h1 per page */}}
+{{- if le (len (findRE "<h1.*?>(.|\n)*?</h1>" .Content)) 0 -}}
+    {{- $titleFound := partial "return-helpers/title" . -}}
+    <h1 class="title-top-level-test-min">{{ $titleFound }}</h1>
+{{- else if gt (len (findRE "<h1.*?>(.|\n)*?</h1>" .Content)) 1 -}}
+    {{ errorf "More than one H1 element in content. This is not allowed by HTML spec." }}
+{{- else -}}
+    {{- range (findRE "<h1.*?>(.|\n)*?</h1>" .Content 1) -}}
+        {{ replaceRE "<h1(.*?)( class=\"(.*?)\")?(.*?)>((.|\n)*?)</h1>" "<h1$1 class=\"$3 title-top-level-test-min\"$4>$5</h1>" . | safeHTML }}
+    {{- end -}}
+{{ end -}}

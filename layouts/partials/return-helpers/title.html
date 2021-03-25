@@ -9,7 +9,7 @@
     {{- end -}}
 {{- else if .File -}}
     {{- if .File.TranslationBaseName -}}
-        {{ $foundTitle = .File.TranslationBaseName | title -}}
+        {{ $foundTitle = .File.TranslationBaseName | humanize | title -}}
     {{- end -}}
 {{- end -}}
 {{- return $foundTitle -}}

@@ -1,0 +1,21 @@
+{{- define "main" -}}
+<ul class="archives-test-min list-test-min">
+    {{ range site.RegularPages.GroupByDate "2006" }}
+    <details class="details-test-min" open="">
+        <summary class="summary-test-main">{{ .Key }}</summary>
+        {{ range .Pages.ByDate.Reverse.GroupByDate "2006-01" }}
+        <details class="details-test-min">
+            <summary class="summary-test-main">{{ .Key }}</summary>
+            <ul class="list-test-min">
+            {{ range .Pages.ByDate.Reverse }}
+                <li><a class="link-test-min" href="{{ .RelPermalink }}">{{ partial "return-helpers/title" .Page }}</a>
+                    <time class="time-test-min" datetime="{{ .Date.UTC.Format "2006-01-02T03:04:05Z07:00" }}">{{ .Date.Local.Format "(Mon, Jan 2 3PM MST)" }}</time>
+                </li>
+            {{ end }}
+            </ul>
+        </details>
+    {{ end }}
+    </details>
+    {{- end }}
+</ul>
+{{- end -}}
