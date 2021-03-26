@@ -1,4 +1,4 @@
-{{- if eq hugo.Environment "development" -}}
+{{- if in (default (slice "development") (.Page.Param "debugTableEnvironment")) hugo.Environment -}}
 {{- $curPage := .Page -}}
 {{- $basePage := .Page -}}
 {{- $curSite := .Site -}}
