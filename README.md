@@ -1,12 +1,15 @@
 # Hugo Minimal Test Theme
 A minimum test theme to generate the full site of pages for [Hugo Basic Example Site](https://github.com/gohugoio/hugoBasicExample) (and other Hugo sites). Includes option to turn on the test styling (for a more realistic test).
 
-Includes the ability to enable less minimal features via custom layouts (with thanks to [Patrick / davidsneighbour on the Hugo Forum](https://discourse.gohugo.io/u/davidsneighbour) for the suggestion).
+Includes the ability to enable less minimal features via custom layouts (with thanks to members of the [Hugo Forum](https://discourse.gohugo.io) for their suggestions).
 
 The purpose of the repo is not for CI or automated testing, but to have a set of layouts for creating minimum reproducible test cases for reporting bugs to the Hugo developers.
+
+See [License](https://github.com/danielfdickinson/hugoMinimalTestTheme/blob/master/LICENSE) for permissions on use.
+
 ## Modern Hugo Only (as of 2021-03-17)
 
-This minimal theme is built using assumptions that may require Hugo 0.81.0 or higher, and in any event that is the only version which this theme has been tested, at present.
+This minimal theme is built using assumptions that may require Hugo 0.81.0 or higher, and in any event those are the only versions on which it has been tested, at present.
 
 ## Available Features
 
