@@ -28,5 +28,17 @@
         {{- end -}}
         </ul>
     </nav>
-</header>
 {{- end }}
+
+{{/* Only allowed one h1 per page */}}
+{{- if le (len (findRE "<h1.*?>(.|\n)*?</h1>" .Content)) 0 -}}
+    {{- $titleFound := partial "return-helpers/title" . -}}
+    <h1>{{ $titleFound }}</h1>
+{{- else if gt (len (findRE "<h1.*?>(.|\n)*?</h1>" .Content)) 1 -}}
+    {{ errorf "More than one H1 element in content. This is not allowed by HTML spec." }}
+{{- else -}}
+    {{- range (findRE "<h1.*?>(.|\n)*?</h1>" .Content 1) -}}
+        {{ . | safeHTML }}
+    {{- end -}}
+{{ end -}}
+</header>
