@@ -57,7 +57,7 @@ Obviously for ``feature-layout`` use the layout from the table below.
 ### hello-world Shortcode
 
 A simple shortcode that emits an HTML paragraph with 'Hello World!'. To use it,
-add ``{{< hello-world>}}`` to a **content** file (not template).
+add ``{{\< hello-world>}}`` to a **content** file (not template).
 ## Usage
 
 1. Clone a site, for example hugoBasicExample and switch to it
