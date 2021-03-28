@@ -1,3 +1,16 @@
+name = "hugoMinimalTestTheme"
+baseURL = "https://example.com/"
+description = "Modules for Hugo Minimal Test Theme"
+
 [module]
+  [[module.hugoVersion]]
+    min = "0.81.0"
+    extended = false
+
   [[module.imports]]
      path = "github.com/danielfdickinson/hugoDebugTables"
+
+[author]
+  name = "Daniel F. Dickinson"
+  homepage = "https://www.danielfdickinson.ca"
+  copyright = "© 2021 Daniel F. Dickinson"
