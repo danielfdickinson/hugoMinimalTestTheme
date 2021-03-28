@@ -1,6 +1,6 @@
 {{ define "main" }}
     {{- if gt (len (findRE "<h1.*?>(.|\n)*?</h1>" .Content)) 0 -}}
-        {{ replaceRE "<h1(.*?)>((.*|\n)*?)</h1>" "<h2$1>$2</h2>" .Content | safeHTML }}
+        {{ replaceRE "<h1(.*?)id=\"(.*?)\"(.*?)>((.*|\n)*?)</h1>" "<h2 $1 id=\"$2-831\"$3>$5</h2>" .Content | safeHTML }}
     {{ else }}
         {{ .Content }}
     {{ end }}
