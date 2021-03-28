@@ -1,0 +1,19 @@
+{{- $curPage := .Page -}}
+{{- $curSite := .Site -}}
+{{- $basePage := .basePage -}}
+{{- $baseSite := .baseSite -}}
+{{- $expandPage := .expandPage -}}
+{{- with $curPage -}}
+    {{- $tableVals := (dict
+        ".CurrentSection" (partial "helpers/debug-tables/debug-helpers/return-page-details" (dict
+            "Page" .CurrentSection "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage))
+        ".FirstSection" (partial "helpers/debug-tables/debug-helpers/return-page-details" (dict
+            "Page" .FirstSection "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage))
+        ".Parent" (partial "helpers/debug-tables/debug-helpers/return-page-details" (dict
+            "Page" .Parent "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false))
+        ".Section" .Section
+        ".Sections" (partial "helpers/debug-tables/debug-helpers/return-pages-details" (dict
+            "Pages" .Sections "Page" $curPage "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" false))
+    ) -}}
+{{- partial "helpers/debug-tables/tables/table-html" $tableVals }}
+{{ end }}
