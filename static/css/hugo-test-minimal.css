@@ -58,7 +58,7 @@ body {
         display: grid;
         height: 100vh;
         grid-auto-flow: row;
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(100%,max-content);
         grid-template-rows: max-content 1fr;
         grid-template-areas:
             'menubar'
@@ -153,7 +153,6 @@ body {
         display: block;
         grid-area: main;
         height: 100%;
-        max-width: minmax(100%, max-content);
         overflow: auto;
         padding: .4em;
     }
@@ -447,4 +446,3 @@ body {
     flex: 1 1 33%;
     margin-left: .4em;
 }
-
