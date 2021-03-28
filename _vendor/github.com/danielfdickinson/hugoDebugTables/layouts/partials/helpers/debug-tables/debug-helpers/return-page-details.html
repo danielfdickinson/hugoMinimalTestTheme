@@ -1,0 +1,17 @@
+{{- $curPage := .Page -}}
+{{- $basePage := .basePage -}}
+{{- $curSite := .Site -}}
+{{- $baseSite := .baseSite -}}
+{{- $expandPage := .expandPage -}}
+{{- with $curPage -}}
+    {{- if and (ne . $basePage) $expandPage }}
+    <details class="details-debug-hugo">
+        <summary class="summary-debug-hugo">{{- partial "helpers/debug-tables/debug-helpers/return-page-title" . -}}</summary>
+    {{- partial "helpers/debug-tables/tables/page" (dict "Page" . "basePage" $basePage "Site" $curSite "baseSite" $baseSite "expandPage" $expandPage) }}
+    </details>
+    {{- else }}
+    <div class="details-debug-hugo">
+        <span class="summary-debug-hugo {{if eq . $basePage }}debug-current-hugo{{ end }}">{{ partial "helpers/debug-tables/debug-helpers/return-page-title" . -}}</span>
+    </div>
+    {{- end }}
+{{- end }}
