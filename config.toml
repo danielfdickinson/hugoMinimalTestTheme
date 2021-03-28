@@ -3,7 +3,7 @@ baseURL = "https://example.com/"
 description = "Modules for Hugo Minimal Test Theme"
 
 [module]
-  [[module.hugoVersion]]
+  [module.hugoVersion]
     min = "0.81.0"
     extended = false
 
