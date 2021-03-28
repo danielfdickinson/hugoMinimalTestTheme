@@ -8,8 +8,15 @@
                 class="link-test-min" href="{{- site.Home.RelPermalink -}}">{{-
                 partial "return-helpers/title" site.Home -}}</a></span>
             </li>
+        {{- $mainMenu := .Site.Menus.main -}}
         {{- range .Site.Home.Pages -}}
-            {{- if le (len (where .Site.Menus.main "URL" (.RelPermalink))) 0 -}}
+            {{- if not $mainMenu -}}
+            <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
+                <span class="link-wrapper-test-min"><a
+                href="{{- .RelPermalink -}}" class="link-test-min">{{-
+                partial "return-helpers/title" . -}}</a></span>
+            </li>
+             {{- else if le (len (where .Site.Menus.main "URL" (.RelPermalink))) 0 -}}
             <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
                 <span class="link-wrapper-test-min"><a
                 href="{{- .RelPermalink -}}" class="link-test-min">{{-
@@ -17,7 +24,8 @@
             </li>
             {{- end -}}
         {{- end -}}
-        {{- range .Site.Menus.main -}}
+        {{- with $mainMenu -}}
+            {{- range . -}}
             <li class="list-item-test-min{{- if
                 $curPage.HasMenuCurrent "main" .
                 }} current-menu-has-test-min{{- else if
@@ -25,6 +33,7 @@
                 <span class="link-wrapper-test-min"><a
                 href="{{- .URL -}}" class="link-test-min">{{- .Name -}}</a></span>
             </li>
+            {{- end -}}
         {{- end -}}
         </ul>
     </nav>
