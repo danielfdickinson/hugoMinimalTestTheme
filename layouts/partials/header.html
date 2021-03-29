@@ -12,7 +12,7 @@
         {{- if $mainMenu -}}
             {{- $mainMenu = .Site.Menus.main -}}
         {{- end -}}
-        {{- range .Site.Home.Pages -}}
+        {{- range .Site.Params.mainSections -}}
             {{- if not $mainMenu -}}
             <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
                 <span class="link-wrapper-test-min"><a
