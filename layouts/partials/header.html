@@ -8,38 +8,18 @@
                 class="link-test-min" href="{{- site.Home.RelPermalink -}}">{{-
                 partial "return-helpers/title" site.Home -}}</a></span>
             </li>
-        {{- $mainMenu := .Site.Menus -}}
-        {{- if $mainMenu -}}
-            {{- $mainMenu = .Site.Menus.main -}}
+        {{- $mainMenu := site.Menus.main -}}
+        {{- $sections := where site.Home.Pages "Section" "in" site.Params.mainSections -}}
+        {{- $menuPages := (slice) -}}
+        {{- range $mainMenu -}}
+            {{- $menuPages = $menuPages | append (where site.Home.Pages "RelPermalink" .URL) -}}
         {{- end -}}
-        {{- range .Site.Params.mainSections -}}
-            {{- $mainPage := $.Site.GetPage . -}}
-            {{- with $mainPage -}}
-                {{- if not $mainMenu -}}
-                <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
-                    <span class="link-wrapper-test-min"><a
-                    href="{{- .RelPermalink -}}" class="link-test-min">{{-
-                    partial "return-helpers/title" . -}}</a></span>
-                </li>
-                {{- else if le (len (where $.Site.Menus.main "URL" (.RelPermalink))) 0 -}}
-                <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
-                    <span class="link-wrapper-test-min"><a
-                    href="{{- .RelPermalink -}}" class="link-test-min">{{-
-                    partial "return-helpers/title" . -}}</a></span>
-                </li>
-                {{- end -}}
-            {{- end -}}
-        {{- end -}}
-        {{- with $mainMenu -}}
-            {{- range . -}}
-            <li class="list-item-test-min{{- if
-                $curPage.HasMenuCurrent "main" .
-                }} current-menu-has-test-min{{- else if
-                $curPage.IsMenuCurrent "main" . }} current-menu-is-test-min{{- end -}}">
+        {{- range (union (first 3 site.Home.RegularPages) (union $sections $menuPages)).ByWeight.ByDate -}}
+            <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
                 <span class="link-wrapper-test-min"><a
-                href="{{- .URL -}}" class="link-test-min">{{- .Name -}}</a></span>
+                href="{{- .RelPermalink -}}" class="link-test-min">{{-
+                partial "return-helpers/title" . -}}</a></span>
             </li>
-            {{- end -}}
         {{- end -}}
         </ul>
     </nav>
