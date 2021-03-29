@@ -13,18 +13,21 @@
             {{- $mainMenu = .Site.Menus.main -}}
         {{- end -}}
         {{- range .Site.Params.mainSections -}}
-            {{- if not $mainMenu -}}
-            <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
-                <span class="link-wrapper-test-min"><a
-                href="{{- .RelPermalink -}}" class="link-test-min">{{-
-                partial "return-helpers/title" . -}}</a></span>
-            </li>
-             {{- else if le (len (where .Site.Menus.main "URL" (.RelPermalink))) 0 -}}
-            <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
-                <span class="link-wrapper-test-min"><a
-                href="{{- .RelPermalink -}}" class="link-test-min">{{-
-                partial "return-helpers/title" . -}}</a></span>
-            </li>
+            {{- $mainPage := .Site.GetPage . -}}
+            {{- with $mainPage -}}
+                {{- if not $mainMenu -}}
+                <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
+                    <span class="link-wrapper-test-min"><a
+                    href="{{- .RelPermalink -}}" class="link-test-min">{{-
+                    partial "return-helpers/title" . -}}</a></span>
+                </li>
+                {{- else if le (len (where .Site.Menus.main "URL" (.RelPermalink))) 0 -}}
+                <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
+                    <span class="link-wrapper-test-min"><a
+                    href="{{- .RelPermalink -}}" class="link-test-min">{{-
+                    partial "return-helpers/title" . -}}</a></span>
+                </li>
+                {{- end -}}
             {{- end -}}
         {{- end -}}
         {{- with $mainMenu -}}
