@@ -8,7 +8,10 @@
                 class="link-test-min" href="{{- site.Home.RelPermalink -}}">{{-
                 partial "return-helpers/title" site.Home -}}</a></span>
             </li>
-        {{- $mainMenu := .Site.Menus.main -}}
+        {{- $mainMenu := .Site.Menus -}}
+        {{- if $mainMenu -}}
+            {{- $mainMenu = .Site.Menus.main -}}
+        {{- end -}}
         {{- range .Site.Home.Pages -}}
             {{- if not $mainMenu -}}
             <li class="list-item-test-min{{- if eq $curPage . }} current-menu-is-test-min{{- end -}}">
