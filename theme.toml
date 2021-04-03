@@ -1,6 +1,6 @@
 name = "HugoMinimalTestTheme"
 license = "MIT"
-licenselink = "https://github.com/danielfdickinson/hugoMinimalTestTheme/blob/master/LICENSE"
+licenselink = "https://git.wildtechgarden.ca/danielfdickinson/hugoMinimalTestTheme/src/branch/master/LICENSE"
 description = "A minimal theme to generate reproducible test cases for Hugo and Hugo-based sites. An optional silly little CSS style thrown in for free."
 homepage = "http://hugo-minimal-test-theme-demo.wildtechgarden.ca/"
 tags = ["test","minimal","light","minimalist","fast","syntax highlighting","demo","debug","debug tool"]

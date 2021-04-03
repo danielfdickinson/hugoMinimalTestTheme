@@ -8,7 +8,7 @@ description = "Modules for Hugo Minimal Test Theme"
     extended = false
 
   [[module.imports]]
-     path = "github.com/danielfdickinson/hugoDebugTables"
+     path = "git.wildtechgarden.ca/danielfdickinson/hugoDebugTables"
 
 [author]
   name = "Daniel F. Dickinson"

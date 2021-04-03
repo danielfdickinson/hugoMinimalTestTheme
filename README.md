@@ -5,7 +5,7 @@ Includes the ability to enable less minimal features via custom layouts (with th
 
 The purpose of the repo is not for CI or automated testing, but to have a set of layouts for creating minimum reproducible test cases for reporting bugs to the Hugo developers.
 
-See [License](https://github.com/danielfdickinson/hugoMinimalTestTheme/blob/master/LICENSE) for permissions on use.
+See [License](https://git.wildtechgarden.ca/danielfdickinson/hugoMinimalTestTheme/src/branch/master/LICENSE) for permissions on use.
 
 ## Modern Hugo Only (as of 2021-03-17)
 
@@ -72,18 +72,18 @@ add ``{{\< hello-world>}}`` to a **content** file (not template).
    ```
    [module]
      [[module.imports]]
-        path = "github.com/danielfdickinson/hugoMinimalTestTheme"
+        path = "git.wildtechgarden.ca/danielfdickinson/hugoMinimalTestTheme"
    ```
 3. Change back to the site directory
 4. Get the module
    ```
-   hugo mod get github.com/danielfdickinson/hugoMinimalTestTheme
+   hugo mod get git.wildtechgarden.ca/danielfdickinson/hugoMinimalTestTheme
    ```
 5. To test the result, run the local Hugo server
    ```
    hugo server -b http://localhost:1313/
    ```
-### Using downloaded copy of the theme (e.g. Zip from Github)
+### Using downloaded copy of the theme (e.g. Zip from the Git repo)
 
 1. Make a themes directory and switch to it
    ```
@@ -91,7 +91,7 @@ add ``{{\< hello-world>}}`` to a **content** file (not template).
    cd themes
    ```
 
-2. Obtain a copy of the theme e.g. ([a theme Zip file from Github](https://github.com/danielfdickinson/hugoMinimalTestTheme/archive/master.zip))
+2. Obtain a copy of the theme e.g. ([a theme Zip file from the Git repo](https://git.wildtechgarden.ca/danielfdickinson/hugoMinimalTestTheme/archive/master.zip))
 3. Copy/extract the theme into hugoMinimalTestTheme in the themes directory
 4. Change back to the site directory
 5. To test the result, run the local Hugo server
@@ -108,7 +108,7 @@ add ``{{\< hello-world>}}`` to a **content** file (not template).
 
 2. In the themes directory, add hugoMinimalTestTheme as a submodule
    ```
-   git submodule add -f https://github.com/danielfdickinson/hugoMinimalTestTheme.git
+   git submodule add -f https://git.wildtechgarden.ca/danielfdickinson/hugoMinimalTestTheme.git
    ```
 3. Change back to the site directory
 4. To test the result, run the local Hugo server
@@ -120,7 +120,7 @@ add ``{{\< hello-world>}}`` to a **content** file (not template).
 
 ## Change Debug Table from Development Only
 
-See full [hugoDebugTable README.md](https://github.com/danielfdickinson/hugoDebugTables/blob/master/README.md)
+See full [hugoDebugTable README.md](https://git.wildtechgarden.ca/danielfdickinson/hugoDebugTables/src/branch/master/README.md)
 for information on using the debug table included in this theme.
 ### To add to production builds
 
@@ -180,7 +180,7 @@ In ``config.toml`` add
 ```
 ### For the Debug Tables
 
-For the parts of styles that apply to the debug tables, see [hugoDebugTables README.md](https://github.com/danielfdickinson/hugoDebugTables/blob/master/README.md)
+For the parts of styles that apply to the debug tables, see [hugoDebugTables README.md](https://git.wildtechgarden.ca/danielfdickinson/hugoDebugTables/src/branch/master/README.md)
 
 ### For the theme itself
 
