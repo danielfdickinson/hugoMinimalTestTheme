@@ -1,1 +1,1 @@
-# git.wildtechgarden.ca/danielfdickinson/hugoDebugTables v0.1.4
+# github.com/danielfdickinson/hugoDebugTables v0.1.7
