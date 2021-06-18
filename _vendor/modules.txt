@@ -1,1 +1,1 @@
-# github.com/danielfdickinson/hugoDebugTables v0.1.7
+# github.com/danielfdickinson/hugoDebugTables v0.1.8

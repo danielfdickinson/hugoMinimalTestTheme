@@ -2,4 +2,4 @@ module github.com/danielfdickinson/hugoMinimalTestTheme
 
 go 1.14
 
-require github.com/danielfdickinson/hugoDebugTables v0.1.7 // indirect
+require github.com/danielfdickinson/hugoDebugTables v0.1.8 // indirect
