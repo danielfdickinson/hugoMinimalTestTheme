@@ -1,4 +1,10 @@
 # Hugo Minimal Test Theme
+
+## ARCHIVED
+
+This theme/tool is archived and has been replaced by [new Hugo Minimal Test](https://github.com/danielfdickinson/hugo-minimal-test) Theme.
+
+## Original Intro
 A minimum test theme to generate the full site of pages for [Hugo Basic Example Site](https://github.com/gohugoio/hugoBasicExample) (and other Hugo sites). Includes option to turn on the test styling (for a more realistic test).
 
 Includes the ability to enable less minimal features via custom layouts (with thanks to members of the [Hugo Forum](https://discourse.gohugo.io) for their suggestions).
